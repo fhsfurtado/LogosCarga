@@ -48,12 +48,11 @@
         <form class="needs-validation was-validated" action="" method="post">
             <!-- INICIO PARTE 1 -->
             <div class="card container" name="dadosCliente" id="dadosCliente">
+                <div class="card-header row justify-content-center">
+                    <label for="dadosCliente"><h4>Cliente</h4></label>
+                </div></br>
                 <div class="row justify-content-center">
-                    <label for="dadosCliente"><h2>Cliente</h2></label>
-                </div>
-                <hr/>
-                <div class="row justify-content-center">
-                    <label for="dadosCliente"><h4>Dados Pessoais</h4></label>
+                    <label for="dadosCliente"><h5>Dados Pessoais</h5></label>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg">
@@ -137,7 +136,16 @@
                         </div>
                     </div>
                 </div>
+                <hr/>
                 <div class="row justify-content-center">
+                    <a class="btn btn-lg btn-warning justify-content-start" name="back" id="back"><i class="fas fa-arrow-circle-left"></i></a>
+                    <a class="btn btn-lg btn-primary justify-content-end" name="next" id="next"><i class="fas fa-arrow-circle-right"></i></a>
+                </div></br>
+            </div>
+            <!-- FIM PARTE 1 -->
+            <!-- INICIO PARTE 2 -->
+            <div class="card container" name="dadosImovel" id="dadosImovel" style="display: none">
+                <div class="card-header row justify-content-center">
                     <label for="dadosCliente"><h4>Imóvel</h4></label>
                 </div>
                 <div class="row">
@@ -206,19 +214,19 @@
                             <label class="form-check-label text-black" for="inlineRadio2"> Não</label>
                         </div>
                     </div>
-                </div><hr/>
-                <div class="row justify-content-center">
-                    <a class="btn btn-lg btn-warning justify-content-start disabled" name="back" id="back"><i class="fas fa-arrow-circle-left"></i></a>
-                    <a class="btn btn-lg btn-primary justify-content-end" name="next" id="next"><i class="fas fa-arrow-circle-right"></i></a>
-                </div></br>
-            </div>
-            <!-- FIM PARTE 1 -->
-            <!-- INICIO PARTE 2 -->
-            <div class="card container" name="dadosSolicitante" id="dadosSolicitante" style="display: none">
-                <div class="row justify-content-center">
-                    <label for="dadosCliente"><h2>Dados do Solicitante</h2></label>
                 </div>
                 <hr/>
+                <div class="row justify-content-center">
+                    <a class="btn btn-lg btn-warning justify-content-start" name="back01" id="back01"><i class="fas fa-arrow-circle-left"></i></a>
+                    <a class="btn btn-lg btn-primary justify-content-end" name="next01" id="next01"><i class="fas fa-arrow-circle-right"></i></a>
+                </div></br>
+            </div>
+            <!-- FIM PARTE 2 -->
+            <!-- INICIO PARTE 3 -->
+            <div class="card container" name="dadosSolicitante" id="dadosSolicitante" style="display: none">
+                <div class=" card-header row justify-content-center">
+                    <label for="dadosCliente"><h4>Dados do Solicitante</h4></label>
+                </div>
                 <div class="row text-center">
                     <div class="form-group col-lg">
                         <div class="form-check">
@@ -319,15 +327,15 @@
                     </div>
                 </div>
                 <div class="row justify-content-center buttons-action">
-                    <a class="btn btn-lg btn-warning justify-content-start" name="back01" id="back01"><i class="fas fa-arrow-circle-left"></i></a>
-                    <a class="btn btn-lg btn-primary justify-content-end" name="next01" id="next01"><i class="fas fa-arrow-circle-right"></i></a>
+                    <a class="btn btn-lg btn-warning justify-content-start" name="back02" id="back02"><i class="fas fa-arrow-circle-left"></i></a>
+                    <a class="btn btn-lg btn-primary justify-content-end" name="next02" id="next02"><i class="fas fa-arrow-circle-right"></i></a>
                 </div></br>
             </div>
-            <!-- FIM PARTE 2-->
-            <!-- PARTE 3-->
+            <!-- FIM PARTE 3-->
+            <!-- INÍCIO PARTE 4-->
             <div class="card container" name="dadosSolicitacao" id="dadosSolicitacao" style="display: none">
                 <div class="row justify-content-center">
-                    <label for="dadosCliente"><h2>Solicitação de Atendimento Técnico / Serviços</h2></label>
+                    <label for="dadosCliente"><h4>Solicitação de Atendimento Técnico / Serviços</h4></label>
                 </div>
                 <hr/>
                 <div class="row justify-content-center text-center">
@@ -397,18 +405,19 @@
                     </div>
                 </div>
                 <div class="row justify-content-center buttons-action">
-                    <a class="btn btn-lg btn-warning justify-content-start" name="back02" id="back02"><i class="fas fa-arrow-circle-left"></i></a>
-                    <a class="btn btn-lg btn-primary justify-content-end" name="next02" id="next02"><i class="fas fa-arrow-circle-right"></i></a>
+                    <a class="btn btn-lg btn-warning justify-content-start" name="back03" id="back03"><i class="fas fa-arrow-circle-left"></i></a>
+                    <a class="btn btn-lg btn-primary justify-content-end" name="next03" id="next03"><i class="fas fa-arrow-circle-right"></i></a>
                 </div></br>
             </div>
             <!-- FIM PARTE 3-->
             <!-- PARTE 4-->
             <div class="card container" name="dadosCaracteristicas" id="dadosCaracteristicas" style="display: none">
-                <hr/>
-                <div class="row justify-content-center text-center">
-                    <div class="form-group col-lg">
-                        <label for="dadosCliente">Tipo de Serviço:</label></br>
-                        <select name="tipoServico" id="tipoServico">
+                <div class="card row justify-content-center text-center">
+                    <div class="card-header">
+                        <label for="tipoServico">Tipo de Caixa:</label>
+                    </div>
+                    <div class="card-body">
+                        <select name="tipoServico" id="tipoServico" class="col-lg-10">
                             <option value="Tipo II - 1 Medidor (bifásico até 100A)">Tipo II - 1 Medidor (bifásico até 100A)</option>
                             <option value="Tipo P - 1 Medidor (bifásico até 100A)">Tipo II - 1 Medidor (bifásico até 100A)</option>
                             <option value="Kit Padrão Montado (Medidores bifásicos até 100A)">Kit Padrão Montado (Medidores bifásicos até 100A)</option>
@@ -423,63 +432,73 @@
                             <option value="Tipo Modular - Medidores (bifásico até 100A)">Tipo Modular - Medidores (bifásico até 100A)</option>
                         </select>
                     </div>
-                    <div class="form-group col-lg">
-                        <small>Em caso de ligação coletiva é obrigatório o uso de dispositivo de proteção e manobra no interior de caixa específica ou na caixa de medição, conforme padrão.</small>
+                    <div class="card-footer">
+                        <small class="form-text text-muted"> <strong>Obs.: </strong> Em caso de ligação coletiva é obrigatório o uso de dispositivo de proteção e manobra no interior de caixa específica ou na caixa de medição, conforme padrão.</small>
                     </div>
                 </div>
-                <div class="row text-center justify-content-center">
-                    <div class="form-group col-lg">
-                        <div class="form-check">
-                            <label for="inputEndereco">Tipo de Ligação:</label>
-                        </div>
-                        <div class="form-check form-check-inline text-center">
-                            <input class="form-check-input" type="radio" name="radioTipoLigacao" id="radioTipoLigacao1" value="monofasico" checked>
-                            <label class="form-check-label" id="labelTipoLigacao1" for="radioTipoLigacao1">
-                                Monofásica
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline text-center">
-                            <input class="form-check-input" type="radio" name="radioTipoLigacao" id="radioTipoLigacao2" value="bifasico">
-                            <label class="form-check-label" id="labelTipoLigacao2" for="radioTipoLigacao2">
-                                Bifásica
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline text-center">
-                            <input class="form-check-input" type="radio" name="radioTipoLigacao" id="radioTipoLigacao3" value="trifasico">
-                            <label class="form-check-label" id="labelTipoLigacao3" for="radioTipoLigacao3">
-                                Trifásica
-                            </label>
-                        </div>
+                <div class="card row justify-content-center text-center">
+                    <div class="card-header">
+                        <label for="tipoServico">Características de Instalação:</label>
                     </div>
-                </div>
-                <div class="row text-center justify-content-center">
-                    <div class="form-group col-lg">
-                        <div class="form-check">
-                            <label for="inputEndereco">Finalidade:</label>
+                    <div class="card-body row justify-content-center text-center">
+                        <div class="col-lg-3">
+                            <label for="">Seção do condutor de entrada:</label>
+                            <input type="text" name="secaoEntrada" id="secaoEntrada" placeholder="valor em mm²">
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioFinalidade" id="radioFinalidade1" value="residencial" checked>
-                            <label class="form-check-label" for="gridRadios1">
-                                Residencial
-                            </label>
+                        <div class="col-lg-3">
+                            <label for="">Seção do condutor do medidor:</label>
+                            <input type="text" name="secaoMedidor" id="secaoMedidor" placeholder="valor em mm²">
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioFinalidade" id="radioFinalidade2" value="comercial">
-                            <label class="form-check-label" for="gridRadios2">
-                                Comercial
-                            </label>
+                        <div class="col-lg-3">
+                            <label for="">Seção do condutor de saída:</label>
+                            <input type="text" name="secaoSaida" id="secaoSaida" placeholder="valor em mm²">
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioFinalidade" id="radioFinalidade3" value="industrial">
-                            <label class="form-check-label" for="gridRadios1">
-                                Industrial
-                            </label>
+                        <div class="col-lg-3">
+                            <label for="">Chave Geral / Disjuntor:</label>
+                            <input type="text" name="secaoChaveGeral" id="secaoChaveGeral" placeholder="valor em Ampères">
+                            
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center buttons-action">
-                    <a class="btn btn-lg btn-warning justify-content-start" name="back02" id="back02"><i class="fas fa-arrow-circle-left"></i></a>
-                    <a class="btn btn-lg btn-primary justify-content-end" name="next02" id="next02"><i class="fas fa-arrow-circle-right"></i></a>
+                <div class="card row text-center">
+                    <div class="card-header">
+                        <label for="tipoServico">Tipo de Poste / Eletroduto:</label>
+                    </div>
+                    <div class="card-body row text-center">
+                    <div class="form-group col-lg">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radioTipoPoste" id="radioTipoPosteSubterraneo" value="Subterrâneo" checked>
+                            <label class="form-check-label text-black" for="inlineRadio1"> Subterrâneo </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radioTipoPoste" id="radioTipoPosteConcreto" value="Concreto">
+                            <label class="form-check-label text-black" for="inlineRadio2"> Concreto </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radioTipoPoste" id="radioTipoPosteAco" value="Aço">
+                            <label class="form-check-label text-black" for="inlineRadio1"> Aço </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radioTipoPoste" id="radioTipoPosteColuna" value="Coluna">
+                            <label class="form-check-label text-black" for="inlineRadio2"> Coluna </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body row justify-content-center text-center">
+                    <div class="col-lg-3 card" name="extraPosteSubterraneo" id="extraPosteSubterraneo">
+                        <label for="">Duto (em mm):</label>
+                        <input type="text">
+                    </div>
+                    <div class="col-lg-3 card" name="extraPosteColuna" id="extraPosteColuna">
+                        <label for="">Nº da ART/RRT Civil:</label>
+                        <input type="text">
+                        <small class="form-text text-muted">Necessária a apresentação de 2 vias do termo com características da coluna, ART/RRT recolhida e assinada pelo responsável técnico e cópia da carteira do CREA/CAU do profissional.</small>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row justify-content-center">
+                    <a class="btn btn-lg btn-warning justify-content-start" name="back04" id="back04"><i class="fas fa-arrow-circle-left"></i></a>
+                    <a class="btn btn-lg btn-primary justify-content-end" name="next04" id="next04"><i class="fas fa-arrow-circle-right"></i></a>
                 </div></br>
             </div>
             <!-- FIM PARTE 4-->
