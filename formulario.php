@@ -402,6 +402,87 @@
                 </div></br>
             </div>
             <!-- FIM PARTE 3-->
+            <!-- PARTE 4-->
+            <div class="card container" name="dadosCaracteristicas" id="dadosCaracteristicas" style="display: none">
+                <hr/>
+                <div class="row justify-content-center text-center">
+                    <div class="form-group col-lg">
+                        <label for="dadosCliente">Tipo de Serviço:</label></br>
+                        <select name="tipoServico" id="tipoServico">
+                            <option value="Tipo II - 1 Medidor (bifásico até 100A)">Tipo II - 1 Medidor (bifásico até 100A)</option>
+                            <option value="Tipo P - 1 Medidor (bifásico até 100A)">Tipo II - 1 Medidor (bifásico até 100A)</option>
+                            <option value="Kit Padrão Montado (Medidores bifásicos até 100A)">Kit Padrão Montado (Medidores bifásicos até 100A)</option>
+                            <option value="Tipo E - 1 Medidor (trifásico até 100A)">Tipo E - 1 Medidor (trifásico até 100A)</option>
+                            <option value="Tipo E - 1 Medidor (medição voltada para a rua)">Tipo E - 1 Medidor (trifásico até 100A)</option>
+                            <option value="Tipo K - 2 medidores (medição coletiva)">Tipo K - 2 medidores (medição coletiva)</option>
+                            <option value="2x Tipo II - 2 Medidores (ligação coletiva aérea)">2x Tipo II - 2 Medidores (ligação coletiva aérea)</option>
+                            <option value="Tipo L - 2 medidores (entrada coletiva + medição)">Tipo L - 2 medidores (entrada coletiva + medição)</option>
+                            <option value="Tipo L - 4 medidores + Caixa T (ligação coletiva)">Tipo L - 4 medidores + Caixa T (ligação coletiva)</option>
+                            <option value="Tipo H - 4 medidores (Entrada coletiva + medição)">Tipo H - 4 medidores (Entrada coletiva + medição)</option>
+                            <option value="Tipo H - 6 medidores + Caixa T (ligação coletiva)">Tipo H - 6 medidores + Caixa T (ligação coletiva)</option>
+                            <option value="Tipo Modular - Medidores (bifásico até 100A)">Tipo Modular - Medidores (bifásico até 100A)</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg">
+                        <small>Em caso de ligação coletiva é obrigatório o uso de dispositivo de proteção e manobra no interior de caixa específica ou na caixa de medição, conforme padrão.</small>
+                    </div>
+                </div>
+                <div class="row text-center justify-content-center">
+                    <div class="form-group col-lg">
+                        <div class="form-check">
+                            <label for="inputEndereco">Tipo de Ligação:</label>
+                        </div>
+                        <div class="form-check form-check-inline text-center">
+                            <input class="form-check-input" type="radio" name="radioTipoLigacao" id="radioTipoLigacao1" value="monofasico" checked>
+                            <label class="form-check-label" id="labelTipoLigacao1" for="radioTipoLigacao1">
+                                Monofásica
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline text-center">
+                            <input class="form-check-input" type="radio" name="radioTipoLigacao" id="radioTipoLigacao2" value="bifasico">
+                            <label class="form-check-label" id="labelTipoLigacao2" for="radioTipoLigacao2">
+                                Bifásica
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline text-center">
+                            <input class="form-check-input" type="radio" name="radioTipoLigacao" id="radioTipoLigacao3" value="trifasico">
+                            <label class="form-check-label" id="labelTipoLigacao3" for="radioTipoLigacao3">
+                                Trifásica
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center justify-content-center">
+                    <div class="form-group col-lg">
+                        <div class="form-check">
+                            <label for="inputEndereco">Finalidade:</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radioFinalidade" id="radioFinalidade1" value="residencial" checked>
+                            <label class="form-check-label" for="gridRadios1">
+                                Residencial
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radioFinalidade" id="radioFinalidade2" value="comercial">
+                            <label class="form-check-label" for="gridRadios2">
+                                Comercial
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radioFinalidade" id="radioFinalidade3" value="industrial">
+                            <label class="form-check-label" for="gridRadios1">
+                                Industrial
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center buttons-action">
+                    <a class="btn btn-lg btn-warning justify-content-start" name="back02" id="back02"><i class="fas fa-arrow-circle-left"></i></a>
+                    <a class="btn btn-lg btn-primary justify-content-end" name="next02" id="next02"><i class="fas fa-arrow-circle-right"></i></a>
+                </div></br>
+            </div>
+            <!-- FIM PARTE 4-->
         </form>
     </div>
     <div class="footer" id="footer" align="center">

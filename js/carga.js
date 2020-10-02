@@ -24,7 +24,11 @@ $('#back02').on("click", function() {
     $("#dadosSolicitante").fadeIn(250);
     window.scrollTo(0,0);
 });
-
+$('#next02').on("click", function() {
+    $("#dadosSolicitacao").fadeOut(250);
+    $("#dadosCaracteristicas").fadeIn(250);
+    window.scrollTo(0,0);
+});
 // fim controle dos botões
 $('input[name="radioSolicIsCliente"]').change(function () {
     if ($('input[name="radioSolicIsCliente"]:checked').val() === "nao") {
