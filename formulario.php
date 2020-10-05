@@ -35,6 +35,18 @@
     </script>
     <?php
         $zero = 0;
+        // troca a cor do nav e footer de acordo com o mês
+        //setembro amarelo, outubro rosa, novembro azul
+        $mes = date('m');
+        if($mes=='09'){
+            echo '<style>#nav,#footer{background-color:#f9be07 !important;}</style>';
+        }
+        if($mes=='10'){
+            echo '<style>#nav,#footer{background-color:#ff4787 !important;}</style>';
+        }
+        if($mes=='11'){
+            echo '<style>#nav,#footer{background-color:#42a7a4 !important;}</style>';
+        }
     ?>
 </head>
 <body>

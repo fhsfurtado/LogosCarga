@@ -39,7 +39,7 @@
     if($mes=='11'){
         echo '<style>#nav,#footer{background-color:#42a7a4 !important;}</style>';
     }
-?>
+    ?>
     <script type="text/javascript">
     $(window).load(function() {
         document.getElementById("loading").style.display = "none";
