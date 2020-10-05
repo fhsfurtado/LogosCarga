@@ -2,7 +2,7 @@
 <html>
 <head>
 
-    <title> Relação de Carga </title>
+    <title> Atendimento ENEL </title>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,7 +39,7 @@
     if($mes=='11'){
         echo '<style>#nav,#footer{background-color:#42a7a4 !important;}</style>';
     }
-?>
+    ?>
     <script type="text/javascript">
     $(window).load(function() {
         document.getElementById("loading").style.display = "none";

@@ -33,6 +33,21 @@
         document.getElementById("content").style.display = "inline";
     });
     </script>
+    <?php
+        $zero = 0;
+        // troca a cor do nav e footer de acordo com o mês
+        //setembro amarelo, outubro rosa, novembro azul
+        $mes = date('m');
+        if($mes=='09'){
+            echo '<style>#nav,#footer{background-color:#f9be07 !important;}</style>';
+        }
+        if($mes=='10'){
+            echo '<style>#nav,#footer{background-color:#ff4787 !important;}</style>';
+        }
+        if($mes=='11'){
+            echo '<style>#nav,#footer{background-color:#42a7a4 !important;}</style>';
+        }
+    ?>
 </head>
 <body>
     <div id="sidebar">
@@ -46,7 +61,7 @@
 	</div>
     <div id="content" class="content container-fluid" style="display: none">
         <form class="needs-validation was-validated" action="" method="post">
-            <!-- INICIO PARTE 1 -->
+            <!-- PARTE 1 - DADOS DO CLIENTE -->
             <div class="card container" name="dadosCliente" id="dadosCliente">
                 <div class="card-header row justify-content-center">
                     <label for="dadosCliente"><h4>Cliente</h4></label>
@@ -143,7 +158,7 @@
                 </div></br>
             </div>
             <!-- FIM PARTE 1 -->
-            <!-- INICIO PARTE 2 -->
+            <!-- PARTE 2 - SOBRE O IMÓVEL -->
             <div class="card container" name="dadosImovel" id="dadosImovel" style="display: none">
                 <div class="card-header row justify-content-center">
                     <label for="dadosCliente"><h4>Imóvel</h4></label>
@@ -222,7 +237,7 @@
                 </div></br>
             </div>
             <!-- FIM PARTE 2 -->
-            <!-- INICIO PARTE 3 -->
+            <!-- PARTE 3 - DADOS DO SOLICITANTE (SE FOR DIFERENTE DOS DADOS DO CLIENTE) -->
             <div class="card container" name="dadosSolicitante" id="dadosSolicitante" style="display: none">
                 <div class=" card-header row justify-content-center">
                     <label for="dadosCliente"><h4>Dados do Solicitante</h4></label>
@@ -332,7 +347,7 @@
                 </div></br>
             </div>
             <!-- FIM PARTE 3-->
-            <!-- INÍCIO PARTE 4-->
+            <!-- PARTE 4 - SOLICITAÇÃO DE ATENDIMENTO TÉCNICO -->
             <div class="card container" name="dadosSolicitacao" id="dadosSolicitacao" style="display: none">
                 <div class="row justify-content-center">
                     <label for="dadosCliente"><h4>Solicitação de Atendimento Técnico / Serviços</h4></label>
@@ -465,22 +480,23 @@
                         <label for="tipoServico">Tipo de Poste / Eletroduto:</label>
                     </div>
                     <div class="card-body row text-center">
-                    <div class="form-group col-lg">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioTipoPoste" id="radioTipoPosteSubterraneo" value="Subterrâneo" checked>
-                            <label class="form-check-label text-black" for="inlineRadio1"> Subterrâneo </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioTipoPoste" id="radioTipoPosteConcreto" value="Concreto">
-                            <label class="form-check-label text-black" for="inlineRadio2"> Concreto </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioTipoPoste" id="radioTipoPosteAco" value="Aço">
-                            <label class="form-check-label text-black" for="inlineRadio1"> Aço </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioTipoPoste" id="radioTipoPosteColuna" value="Coluna">
-                            <label class="form-check-label text-black" for="inlineRadio2"> Coluna </label>
+                        <div class="form-group col-lg">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radioTipoPoste" id="radioTipoPosteSubterraneo" value="Subterrâneo" checked>
+                                <label class="form-check-label text-black" for="inlineRadio1"> Subterrâneo </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radioTipoPoste" id="radioTipoPosteConcreto" value="Concreto">
+                                <label class="form-check-label text-black" for="inlineRadio2"> Concreto </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radioTipoPoste" id="radioTipoPosteAco" value="Aço">
+                                <label class="form-check-label text-black" for="inlineRadio1"> Aço </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radioTipoPoste" id="radioTipoPosteColuna" value="Coluna">
+                                <label class="form-check-label text-black" for="inlineRadio2"> Coluna </label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -501,7 +517,59 @@
                     <a class="btn btn-lg btn-primary justify-content-end" name="next04" id="next04"><i class="fas fa-arrow-circle-right"></i></a>
                 </div></br>
             </div>
-            <!-- FIM PARTE 4-->
+            <!-- FIM PARTE 4 -->
+            <!-- PARTE 5-->
+            <div class="card container" name="dadosRelCarga" id="dadosRelCarga" style="display: none">
+                <div class="card row justify-content-center text-center">
+                    <div class="card-header">
+                        <label for="tipoServico">Relação de Carga:</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body row justify-content-center text-center">
+                            <div class="col-lg-4">
+                                <label for="selEquipamento"></label>
+                                <select name="selEquipamento" id="selEquipamento" class="col-lg-6">
+                                    <option value="Lâmpada Compacta/Fria">Lâmpada Compacta/Fria</option>
+                                    <option value="Lâmpada Incandescente">Lâmpada Incandescente</option>
+                                    <option value="Lâmpada Fluorescente">Lâmpada Fluorescente</option>
+                                    <option value="Tomada de Uso Geral">Tomada de Uso Geral</option>
+                                    <option value="Tomada de Uso Específico">Tomada de Uso Específico</option>
+                                    <option value="Torneira Elétrica">Torneira Elétrica</option>
+                                    <option value="Chuveiro Elétrico">Chuveiro Elétrico</option>
+                                    <option value="Máquina de Lavar Louça">Máquina de Lavar Louça</option>
+                                    <option value="Secadora de Roupas">Secadora de Roupas</option>
+                                    <option value="Forno Microondas">Forno Microondas</option>
+                                    <option value="Forno Elétrico">Forno Elétrico</option>
+                                    <option value="Ferro Elétrico">Ferro Elétrico</option>
+                                    <option value="Ar Condicionado">Ar Condicionado</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-4">
+                                <input type="tel" name="inputPotenciaEquipamento" id="inputPotenciaEquipamento" class="col-lg-3" placeholder="Potência. Ex.: 25, 60, etc.">
+                                <label for="inputPotenciaEquipamento" id="labelPotenciaEquip">Watts</label>
+                                <label for="inputPotenciaEquipamento" id="labelPotenciaAr">BTU's</label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="hidden" name="qtdeEquipAdd" id="qtdeEquipAdd" value="<?php echo $zero;?>">
+                                <a class="btn btn-outline-primary col-lg-6" id="addEquip" name="addEquip" onclick="addEquip()"><i class="fas fa-plus-square"></i> Adicionar Equipamento</a>
+                            </div>
+                        </div>
+                        <hr/>
+                        <label for="nothing">Lista de Equipamentos</label>
+                        <div class="row justify-content-center text-center" id="listEquipamentos">
+                            <label for="nothing too" id="semEquip" name="semEquip">Não há dispositivos adicionados à lista!</label>
+                        <hr/>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row justify-content-center">
+                    <a class="btn btn-lg btn-warning justify-content-start" name="back05" id="back05"><i class="fas fa-arrow-circle-left"></i></a>
+                    <a class="btn btn-lg btn-primary justify-content-end" name="next05" id="next05"><i class="fas fa-arrow-circle-right"></i></a>
+                </div></br>
+            </div>
+            <!-- FIM PARTE 5 -->
+            <!-- PARTE 6 - ASSINATURA -->
+            <!-- FIM PARTE 6 -->
         </form>
     </div>
     <div class="footer" id="footer" align="center">

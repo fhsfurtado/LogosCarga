@@ -20,7 +20,7 @@ hr{
     color: white;
     background-color: red;
 }
-#back , #next, #back01 , #next01, #back02 , #next02, #back03 , #next03, #back04 , #next04, #back05 , #save{
+#back , #next, #back01 , #next01, #back02 , #next02, #back03 , #next03, #back04 , #next04, #back05 , #next05, #save {
     color: white;
     border-radius: 75px;
     margin-inline-start: auto;
@@ -42,4 +42,10 @@ hr{
 }
 #labelTipoLigacao1, #labelTipoLigacao2, #labelTipoLigacao3{
     margin-right: 7px;
+}
+a#addEquip{
+    color: blue;
+}
+a#addEquip:hover{
+    color: white;
 }
