@@ -80,7 +80,7 @@
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <label for="inputCPFCNPJ">CPF / CNPJ</label>
-                        <input type="text" class="form-control p01" id="inputCPFCNPJ" name="inputCPFCNPJ" placeholder="CPF / CNPJ" required>
+                        <input type="text" class="form-control p01" id="inputCPFCNPJ" name="inputCPFCNPJ" onkeypress="fMasc(this,mCPF)" placeholder="CPF / CNPJ" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="inputCEP">CEP:</label>
-                        <input type="text" class="form-control" id="inputCEP" name="inputCEP" placeholder="CEP" required>
+                        <input type="text" class="form-control" id="inputCEP" name="inputCEP" onkeypress="fMasc(this,mCEP)" placeholder="CEP" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -140,13 +140,13 @@
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputFixo">Telefone Fixo:</label>
-                        <input type="text" class="form-control" id="inputFixo" name="inputFixo" placeholder="(XX) XXXX-XXXX" required>
+                        <input type="text" class="form-control" id="inputFixo" name="inputFixo" onkeypress="fMasc(this,mTel)" placeholder="(XX) XXXX-XXXX" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputCelular">Telefone Celular:</label>
-                        <input type="text" class="form-control" id="inputCelular" name="inputCelular" placeholder="(XX) X XXXX-XXXX" required>
+                        <input type="text" class="form-control" id="inputCelular" name="inputCelular" onkeypress="fMasc(this,mTel)" placeholder="(XX) X XXXX-XXXX" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
