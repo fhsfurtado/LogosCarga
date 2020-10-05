@@ -86,7 +86,7 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="inputRG">RG</label>
-                        <input type="text" class="form-control p01" id="inputRG" name="inputRG" placeholder="Nº do Registro Geral" required>
+                        <input type="text" class="form-control p01" id="inputRG" name="inputRG" onkeypress="return SoNumeros();" placeholder="Nº do Registro Geral" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                     </div>
                     <div class="form-group col-lg-2">
                         <label for="inputNumero">Nº:</label>
-                        <input type="text" class="form-control" id="inputNumero" name="inputNumero" placeholder="Nº do imóvel" required>
+                        <input type="tel" class="form-control" id="inputNumero" name="inputNumero" onkeypress="return SoNumeros();" placeholder="Nº do imóvel" required>
                     </div>
                 </div>
                 <div class="row">
@@ -166,13 +166,13 @@
                 <div class="row">
                     <div class="form-group col-lg-4">
                         <label for="inputAreaConstr">Área Construída (m²):</label>
-                        <input type="tel" class="form-control" id="inputAreaConstr" name="inputAreaConstr" placeholder="Área Construída" min="0" required>
+                        <input type="tel" class="form-control" id="inputAreaConstr" name="inputAreaConstr" onkeypress="return SoNumeros();" placeholder="Área Construída" min="0" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputQtdeComodos">Nº de Cômodos:</label>
-                        <input type="tel" class="form-control" id="inputQtdeComodos" name="inputQtdeComodos" placeholder="Qtde. Cômodos" min="0" required>
+                        <input type="tel" class="form-control" id="inputQtdeComodos" name="inputQtdeComodos" onkeypress="return SoNumeros();" placeholder="Qtde. Cômodos" min="0" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -186,19 +186,19 @@
                 <div class="row">
                     <div class="form-group col-lg-3">
                         <label for="inputNumInstalacao">Nº Instalação:</label>
-                        <input type="text" class="form-control" id="inputNumInstalacao" name="inputNumInstalacao" placeholder="Nº Inst." required>
+                        <input type="text" class="form-control" id="inputNumInstalacao" name="inputNumInstalacao" placeholder="Nº Inst." onkeypress="return SoNumeros();" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-3">
                         <label for="inputNumParceiro">Nº Parcero de Negócio:</label>
-                        <input type="text" class="form-control" id="inputNumParceiro" name="inputNumParceiro" placeholder="Nº Parceiro" required>
+                        <input type="text" class="form-control" id="inputNumParceiro" name="inputNumParceiro" onkeypress="return SoNumeros();" placeholder="Nº Parceiro" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-3">
                         <label for="inputNumNota">Nº Nota de Serviço:</label>
-                        <input type="text" class="form-control" id="inputNumNota" name="inputNumNota" placeholder="Nº Nota" required>
+                        <input type="text" class="form-control" id="inputNumNota" name="inputNumNota" onkeypress="return SoNumeros();" placeholder="Nº Nota" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -212,7 +212,7 @@
                 <div class="row text-center" >
                     <div class="form-group col-lg-4">
                         <label for="inputNumInstalacaoVizinho">Nº da instalação do vizinho mais próximo:</label>
-                        <input type="text" class="form-control" id="inputNumInstalacaoVizinho" name="inputNumInstalacaoVizinho" placeholder="Complemento" required>
+                        <input type="text" class="form-control" id="inputNumInstalacaoVizinho" name="inputNumInstalacaoVizinho" onkeypress="return SoNumeros();" placeholder="Complemento" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -261,7 +261,7 @@
                     <div class="row">
                         <div class="form-group col-lg">
                             <label for="inputNome">Nome Completo / Razão Social:</label>
-                            <input type="text" class="form-control" id="inputNome" name="inputNome" placeholder="Nome Completo / Razão Social" required>
+                            <input type="text" class="form-control" id="inputNomeCliente" name="inputNomeCliente" placeholder="Nome Completo / Razão Social">
                             <div class="valid-feedback">
                             </div>
                         </div>
@@ -269,13 +269,13 @@
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label for="inputCPFCNPJ">CPF / CNPJ</label>
-                            <input type="text" class="form-control" id="inputCPFCNPJ" name="inputCPFCNPJ" placeholder="CPF / CNPJ" required>
+                            <input type="text" class="form-control" id="inputCPFCNPJCliente" name="inputCPFCNPJCliente" placeholder="CPF / CNPJ">
                             <div class="valid-feedback">
                             </div>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="inputRG">RG</label>
-                            <input type="text" class="form-control" id="inputRG" name="inputRG" placeholder="Nº do Registro Geral" required>
+                            <input type="text" class="form-control" id="inputRGCliente" name="inputRGCliente" onkeypress="return SoNumeros();" placeholder="Nº do Registro Geral" required>
                             <div class="valid-feedback">
                             </div>
                         </div>
@@ -283,25 +283,25 @@
                     <div class="row">
                         <div class="form-group col-lg-10">
                             <label for="inputEndereco">Endereço:</label>
-                            <input type="text" class="form-control" id="inputEndereco" name="inputEndereco" placeholder="Rua, Avenida, Estrada, etc..." required>
+                            <input type="text" class="form-control" id="inputEnderecoCliente" name="inputEnderecoCliente" placeholder="Rua, Avenida, Estrada, etc..." required>
                             <div class="valid-feedback">
                             </div>
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="inputNumero">Nº:</label>
-                            <input type="text" class="form-control" id="inputNumero" name="inputNumero" placeholder="Nº do imóvel" required>
+                            <input type="text" class="form-control" id="inputNumeroCliente" name="inputNumeroCliente" onkeypress="return SoNumeros();" placeholder="Nº do imóvel" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label for="inputComplemento">Complemento</label>
-                            <input type="text" class="form-control" id="inputComplemento" name="inputComplemento" placeholder="Complemento" required>
+                            <input type="text" class="form-control" id="inputComplementoCliente" name="inputComplementoCliente" placeholder="Complemento" required>
                             <div class="valid-feedback">
                             </div>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="inputBairro">Bairro</label>
-                            <input type="text" class="form-control" id="inputBairro" name="inputBairro" placeholder="Bairro" required>
+                            <input type="text" class="form-control" id="inputBairroCliente" name="inputBairroCliente" placeholder="Bairro" required>
                             <div class="valid-feedback">
                             </div>
                         </div>
@@ -309,13 +309,13 @@
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label for="inputMunicipio">Município:</label>
-                            <input type="text" class="form-control" id="inputMunicipio" name="inputMunicipio" placeholder="Municipio" required>
+                            <input type="text" class="form-control" id="inputMunicipioCliente" name="inputMunicipioCliente" placeholder="Municipio" required>
                             <div class="valid-feedback">
                             </div>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="inputCEP">CEP:</label>
-                            <input type="text" class="form-control" id="inputCEP" name="inputCEP" placeholder="CEP" required>
+                            <input type="text" class="form-control" id="inputCEPCliente" name="inputCEPCliente" placeholder="CEP" required>
                             <div class="valid-feedback">
                             </div>
                         </div>
@@ -323,19 +323,19 @@
                     <div class="row">
                         <div class="form-group col-lg-4">
                             <label for="inputEmail">E-mail:</label>
-                            <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="seuemail@exemplo.com" required>
+                            <input type="email" class="form-control" id="inputEmailCliente" name="inputEmailCliente" placeholder="seuemail@exemplo.com" required>
                             <div class="valid-feedback">
                             </div>
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="inputFixo">Telefone Fixo:</label>
-                            <input type="text" class="form-control" id="inputFixo" name="inputFixo" placeholder="(XX) XXXX-XXXX" required>
+                            <input type="text" class="form-control" id="inputFixoCliente" name="inputFixoCliente" placeholder="(XX) XXXX-XXXX" required>
                             <div class="valid-feedback">
                             </div>
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="inputCelular">Telefone Celular:</label>
-                            <input type="text" class="form-control" id="inputCelular" name="inputCelular" placeholder="(XX) X XXXX-XXXX" required>
+                            <input type="text" class="form-control" id="inputCelularCliente" name="inputCelularCliente" placeholder="(XX) X XXXX-XXXX" required>
                             <div class="valid-feedback">
                             </div>
                         </div>
@@ -458,19 +458,19 @@
                     <div class="card-body row justify-content-center text-center">
                         <div class="col-lg-3">
                             <label for="">Seção do condutor de entrada:</label>
-                            <input type="text" name="secaoEntrada" id="secaoEntrada" placeholder="valor em mm²">
+                            <input type="tel" name="secaoEntrada" id="secaoEntrada" onkeypress="return SoNumeros();" placeholder="valor em mm²">
                         </div>
                         <div class="col-lg-3">
                             <label for="">Seção do condutor do medidor:</label>
-                            <input type="text" name="secaoMedidor" id="secaoMedidor" placeholder="valor em mm²">
+                            <input type="tel" name="secaoMedidor" id="secaoMedidor" onkeypress="return SoNumeros();" placeholder="valor em mm²">
                         </div>
                         <div class="col-lg-3">
                             <label for="">Seção do condutor de saída:</label>
-                            <input type="text" name="secaoSaida" id="secaoSaida" placeholder="valor em mm²">
+                            <input type="tel" name="secaoSaida" id="secaoSaida" onkeypress="return SoNumeros();" placeholder="valor em mm²">
                         </div>
                         <div class="col-lg-3">
                             <label for="">Chave Geral / Disjuntor:</label>
-                            <input type="text" name="secaoChaveGeral" id="secaoChaveGeral" placeholder="valor em Ampères">
+                            <input type="text" name="secaoChaveGeral" id="secaoChaveGeral" onkeypress="return SoNumeros();" placeholder="valor em Ampères">
                             
                         </div>
                     </div>
@@ -503,11 +503,11 @@
                 <div class="card-body row justify-content-center text-center">
                     <div class="col-lg-3 card" name="extraPosteSubterraneo" id="extraPosteSubterraneo">
                         <label for="">Duto (em mm):</label>
-                        <input type="text">
+                        <input type="text" id="extraDuto" name="" onkeypress="return SoNumeros();">
                     </div>
                     <div class="col-lg-3 card" name="extraPosteColuna" id="extraPosteColuna">
                         <label for="">Nº da ART/RRT Civil:</label>
-                        <input type="text">
+                        <input type="text" id="extraARTColuna" name="extraARTColuna" onkeypress="return SoNumeros();">
                         <small class="form-text text-muted">Necessária a apresentação de 2 vias do termo com características da coluna, ART/RRT recolhida e assinada pelo responsável técnico e cópia da carteira do CREA/CAU do profissional.</small>
                     </div>
                 </div>
@@ -545,7 +545,7 @@
                                 </select>
                             </div>
                             <div class="col-lg-4">
-                                <input type="tel" name="inputPotenciaEquipamento" id="inputPotenciaEquipamento" class="col-lg-3" placeholder="Potência. Ex.: 25, 60, etc.">
+                                <input type="tel" name="inputPotenciaEquipamento" id="inputPotenciaEquipamento" class="col-lg-3" onkeypress="return SoNumeros();" placeholder="Potência. Ex.: 25, 60, etc.">
                                 <label for="inputPotenciaEquipamento" id="labelPotenciaEquip">Watts</label>
                                 <label for="inputPotenciaEquipamento" id="labelPotenciaAr">BTU's</label>
                             </div>
@@ -558,7 +558,24 @@
                         <label for="nothing">Lista de Equipamentos</label>
                         <div class="row justify-content-center text-center" id="listEquipamentos">
                             <label for="nothing too" id="semEquip" name="semEquip">Não há dispositivos adicionados à lista!</label>
-                        <hr/>
+                        </div><hr/>
+                    </div>
+                    <div class="card-header">
+                        <label for="tipoServico">Dados do Solicitante</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-lg-12">
+                            <label for="inputNomeRazaoSocial">Nome / Razão Social:</label>
+                            <input type="text" name="inputNomeRazaoSocial" id="inputNomeRazaoSocial">
+                        </div>
+                        <div class="col-lg-4">
+                            <label for="inputCPFCNPJ">CPF / CNPJ:</label>
+                            <input type="text" name="inputCPFCNPJ" id="inputCPFCNPJ">
+                        </div>
+                        <div class="col-lg-4">
+                            <label for="inputRG">RG:</label>
+                            <input type="text" name="inputRG" id="inputRG">
+                        </div>
                     </div>
                 </div>
                 <hr/>
@@ -569,6 +586,24 @@
             </div>
             <!-- FIM PARTE 5 -->
             <!-- PARTE 6 - ASSINATURA -->
+            <div class="card container" name="dadosAssinatura" id="dadosAssinatura" style="display: none">
+                <div class="card row justify-content-center text-center">
+                    <div class="card-header">
+                        <label for="tipoServico">Assinatura</label>
+                    </div>
+                    <div class="card-body" id="canvasDiv" width="400px" height="300px">
+                    </div>
+                    <a class="btn btn-outline-primary col-lg-4" id="clearCanvasSimple" onclick="redraw();">Limpar</a>
+                    <div class="card-footer">
+                    Para finalizar a solicitação, faça acima a sua assinatura.
+                    </div>
+                </div>
+                <hr/>
+                <div class="row justify-content-center">
+                    <a class="btn btn-lg btn-warning justify-content-start" name="back06" id="back06"><i class="fas fa-arrow-circle-left"></i></a>
+                    <a type="submit" class="btn btn-lg btn-primary justify-content-end" name="save" id="save"><i class="far fa-save"></i></a>
+                </div></br>
+            </div>
             <!-- FIM PARTE 6 -->
         </form>
     </div>
