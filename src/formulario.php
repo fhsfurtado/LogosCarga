@@ -1,3 +1,6 @@
+<?php
+    require_once('../config.php');
+?> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,18 +17,18 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/carga.css">
+    <link rel="stylesheet" href= "<?php echo BASE;?>/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo BASE;?>/css/carga.css">
 
     <!-- Bootstrap core CSS-->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo BASE;?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Page level plugin CSS-->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="<?php echo BASE;?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- FontAwesome -->
-    <link href="vendor/font-awesome/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="vendor/font-awesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo BASE;?>/vendor/font-awesome/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo BASE;?>/vendor/font-awesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
 
     <script type="text/javascript">
     $(window).load(function() {
@@ -52,11 +55,11 @@
 <body>
     <div id="sidebar">
         <nav id="nav" class="navbar navbar-collapse navbar-expand static-top" role="navigation" style="margin-bottom: 0">
-            <a class="navbar-brand mr-1" href="index.php"style="background-color: white; border-radius: 6px;"><img src="img/logo.png" height="50px"></a>
+            <a class="navbar-brand mr-1" href="<?php echo BASE;?>/index.php"style="background-color: white; border-radius: 6px;"><img src="<?php echo BASE;?>/img/logo.png" height="50px"></a>
         </nav>
     </div>
     <div id="loading" style="display: block" class="loading" align="center">
-		<img src="img/preloader.gif"><br>
+		<img src="<?php echo BASE;?>/img/preloader.gif"><br>
 	    Carregando...
 	</div>
     <div id="content" class="content container-fluid" style="display: none">
@@ -80,13 +83,13 @@
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <label for="inputCPFCNPJ">CPF / CNPJ</label>
-                        <input type="text" class="form-control p01" id="inputCPFCNPJ" name="inputCPFCNPJ" onkeypress="fMasc(this,mCPF)" placeholder="CPF / CNPJ" required>
+                        <input type="tel" class="form-control p01" id="inputCPFCNPJ" name="inputCPFCNPJ" onkeydown="return fMasc(this,mCPFCNPJ)" placeholder="CPF / CNPJ" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="inputRG">RG</label>
-                        <input type="text" class="form-control p01" id="inputRG" name="inputRG" onkeypress="return SoNumeros();" placeholder="Nº do Registro Geral" required>
+                        <input type="tel" class="form-control p01" id="inputRG" name="inputRG" onkeypress="return SoNumeros();" placeholder="Nº do Registro Geral" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -608,22 +611,22 @@
         </form>
     </div>
     <div class="footer" id="footer" align="center">
-        Powered by: <img src="img/logos.png" width="90px" alt=""> &copy;
+        Powered by: <img src="<?php echo BASE;?>/img/logos.png" width="90px" alt=""> &copy;
     </div>
     
     <!-- END OF CODE -->
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo BASE;?>/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo BASE;?>/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Page level plugin JavaScript-->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="<?php echo BASE;?>/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?php echo BASE;?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="vendor/font-awesome/js/all.min.js"></script>
-    <script src="vendor/font-awesome/js/fontawesome.min.js"></script>
-    <script src="js/carga.js"></script>
+    <script src="<?php echo BASE;?>/vendor/font-awesome/js/all.min.js"></script>
+    <script src="<?php echo BASE;?>/vendor/font-awesome/js/fontawesome.min.js"></script>
+    <script src="<?php echo BASE;?>/js/carga.js"></script>
     </body>
 </html>
