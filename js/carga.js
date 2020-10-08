@@ -76,6 +76,26 @@ $('#back06').on("click", function() {
     window.scrollTo(0,0);
 });
 // fim controle dos botões
+// as funções abaixo não permitirão que o usuário prossiga no formulário enquanto não completar os dados obrigatórios
+//tela 1
+$(document).on('keyup', '.form input', function(){
+    var val01 = $('#inputNome').val();
+    var val02 = $('#inputCPFCNPJ').val();
+    var val03 = $('#inputRG').val();
+    var val04 = $('#inputEndereco').val();
+    var val05 = $('#inputComplemento').val();
+    var val06 = $('#inputBairro').val();
+    var val07 = $('#inputMunicipio').val();
+    var val08 = $('#inputCEP').val();
+    var val09 = $('#inputEmail').val();
+    var val10 = $('#inputCelular').val();
+    if(val01 != "" || val02 != "" || val03 != "" || val04 != "" || val05 != "" || val06 != "" || val07 != "" || val08 != "" || val09 != "" || val10 != ""){
+        $('#next').setAttribute('disabled','disabled');
+    }else{
+        $('#next').removeAttribute('disabled');
+    }
+});
+
 /* Existe a possibilidade de o solicitante do serviço e o cliente serem distintos. (?)
 Se forem o mesmo, não preenche os dados. Se forem distintos, mostra o formulário para preenchimento*/
 $('input[name="radioSolicIsCliente"]').change(function () {
@@ -258,117 +278,56 @@ function mCEP(cep){
     return cep;
 }
 // evento de assinatura em tela usando dedo, mouse ou caneta touch
+function download(dataURL, filename) {
+    if (navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf("Chrome") === -1) {
+        window.open(dataURL);
+    } else {
+        var blob = dataURLToBlob(dataURL);
+        var url = window.URL.createObjectURL(blob);
 
-var canvasDiv = document.getElementById('canvasDiv');
-var canvasWidth = canvasDiv.getAttribute("width");
-var canvasHeight = canvasDiv.getAttribute("height");
-console.log("largura: "+canvasWidth);
-console.log("altura: "+canvasHeight);
-canvas = document.createElement('canvas');
-canvas.setAttribute('width', canvasWidth);
-canvas.setAttribute('height', canvasHeight);
-canvas.setAttribute('id', 'canvas');
-canvasDiv.appendChild(canvas);
-if(typeof G_vmlCanvasManager != 'undefined') {
-	canvas = G_vmlCanvasManager.initElement(canvas);
-}
-context = canvas.getContext("2d");
-$('#canvas').mousedown(function(e){
-    var mouseX = e.pageX - this.offsetLeft;
-    var mouseY = e.pageY - this.offsetTop;
-          
-    paint = true;
-    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
-    redraw();
-  });
-  $('#canvas').mousemove(function(e){
-    if(paint){
-      addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-      redraw();
+        var a = document.createElement("a");
+        a.style = "display: none";
+        a.href = url;
+        a.download = filename;
+
+        document.body.appendChild(a);
+        a.click();
+
+        window.URL.revokeObjectURL(url);
     }
-  });
-  $('#canvas').mouseup(function(e){
-    paint = false;
-  });
-  $('#canvas').mouseleave(function(e){
-    paint = false;
-  });
-  var clickX = new Array();
-  var clickY = new Array();
-  var clickDrag = new Array();
-  var paint;
-  
-  function addClick(x, y, dragging){
-    clickX.push(x);
-    clickY.push(y);
-    clickDrag.push(dragging);
-  }
-  // Set up touch events for mobile, etc
-canvas.addEventListener("touchstart", function (e) {
-    mousePos = getTouchPos(canvas, e);
-var touch = e.touches[0];
-var mouseEvent = new MouseEvent("mousedown", {
-clientX: touch.clientX,
-clientY: touch.clientY
-});
-canvas.dispatchEvent(mouseEvent);
-}, false);
-
-canvas.addEventListener("touchend", function (e) {
-var mouseEvent = new MouseEvent("mouseup", {});
-canvas.dispatchEvent(mouseEvent);
-}, false);
-
-canvas.addEventListener("touchmove", function (e) {
-var touch = e.touches[0];
-var mouseEvent = new MouseEvent("mousemove", {
-clientX: touch.clientX,
-clientY: touch.clientY
-});
-canvas.dispatchEvent(mouseEvent);
-}, false);
-
-// Get the position of a touch relative to the canvas
-function getTouchPos(canvasDom, touchEvent) {
-var rect = canvasDom.getBoundingClientRect();
-return {
-x: touchEvent.touches[0].clientX - rect.left,
-y: touchEvent.touches[0].clientY - rect.top
-};
 }
 
-// Prevent scrolling when touching the canvas
-document.body.addEventListener("touchstart", function (e) {
-if (e.target == canvas) {
-e.preventDefault();
-}
-}, false);
-document.body.addEventListener("touchend", function (e) {
-if (e.target == canvas) {
-e.preventDefault();
-}
-}, false);
-document.body.addEventListener("touchmove", function (e) {
-if (e.target == canvas) {
-e.preventDefault();
-}
-}, false);
-  function redraw(){
-    context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
-    
-    context.strokeStyle = "#000";
-    context.lineJoin = "round";
-    context.lineWidth = 5;
-              
-    for(var i=0; i < clickX.length; i++) {		
-      context.beginPath();
-      if(clickDrag[i] && i){
-        context.moveTo(clickX[i-1], clickY[i-1]);
-       }else{
-         context.moveTo(clickX[i]-1, clickY[i]);
-       }
-       context.lineTo(clickX[i], clickY[i]);
-       context.closePath();
-       context.stroke();
+function dataURLToBlob(dataURL) {
+    var parts = dataURL.split(';base64,');
+    var contentType = parts[0].split(":")[1];
+    var raw = window.atob(parts[1]);
+    var rawLength = raw.length;
+    var uInt8Array = new Uint8Array(rawLength);
+
+    for (var i = 0; i < rawLength; ++i) {
+        uInt8Array[i] = raw.charCodeAt(i);
     }
-  }
+    return new Blob([uInt8Array], { type: contentType });
+}
+
+var signaturePad = new SignaturePad(document.getElementById('signature-pad'),{
+    backgroundColor: 'rgba(255, 255, 255, 0)',
+    penColor: 'rgb(0, 0, 0)'
+});
+
+var saveButton = document.getElementById('save');
+var cancelButton = document.getElementById('clearCanvasSimple');
+
+saveButton.addEventListener("click", function(event) {
+    if (signaturePad.isEmpty()) {
+        alert("Para finalizar, é necessário assinar!");
+    } else {
+        var dataURL = signaturePad.toDataURL();
+        $("#imageCheck").val(dataURL);
+        $("#gravaRel").submit();
+    }
+});
+
+cancelButton.addEventListener('click', function(event) {
+    signaturePad.clear();
+});

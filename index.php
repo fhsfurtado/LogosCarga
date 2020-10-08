@@ -16,6 +16,7 @@
 
     <!-- jQuery AJax-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/signature_pad@3.0.0-beta.3/dist/signature_pad.min.js"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">

@@ -33,6 +33,13 @@ hr{
     background-color: red !important; 
     color: white !important;
 }
+.signature-pad {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width:250px;
+    height:367px;
+}
 .card{
     margin: 7px;
 }

@@ -11,10 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Fabio Henrique Silva furtado" content="">
 
-    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="<?php echo BASE;?>/img/icon.png" type="image/x-icon" />
 
     <!-- jQuery AJax-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo BASE;?>/js/signature.js"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href= "<?php echo BASE;?>/css/bootstrap.min.css">
@@ -63,7 +64,7 @@
 	    Carregando...
 	</div>
     <div id="content" class="content container-fluid" style="display: none">
-        <form class="needs-validation was-validated" action="" method="post">
+        <form id="formRelCarga" name="formRelCarga" class="needs-validation was-validated" action="gravaRel.php" method="post">
             <!-- PARTE 1 - DADOS DO CLIENTE -->
             <div class="card container" name="dadosCliente" id="dadosCliente">
                 <div class="card-header row justify-content-center">
@@ -74,7 +75,7 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-lg">
-                        <label for="inputNome">Nome Completo / Razão Social:</label>
+                        <label for="inputNome">Nome Completo / Razão Social*:</label>
                         <input type="text" class="form-control p01" id="inputNome" name="inputNome" placeholder="Nome Completo / Razão Social" required>
                         <div class="valid-feedback">
                         </div>
@@ -82,13 +83,13 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-6">
-                        <label for="inputCPFCNPJ">CPF / CNPJ</label>
+                        <label for="inputCPFCNPJ">CPF / CNPJ*</label>
                         <input type="tel" class="form-control p01" id="inputCPFCNPJ" name="inputCPFCNPJ" onkeydown="return fMasc(this,mCPFCNPJ)" placeholder="CPF / CNPJ" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-6">
-                        <label for="inputRG">RG</label>
+                        <label for="inputRG">RG*</label>
                         <input type="tel" class="form-control p01" id="inputRG" name="inputRG" onkeypress="return SoNumeros();" placeholder="Nº do Registro Geral" required>
                         <div class="valid-feedback">
                         </div>
@@ -96,25 +97,25 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-10">
-                        <label for="inputEndereco">Endereço:</label>
+                        <label for="inputEndereco">Endereço*:</label>
                         <input type="text" class="form-control" id="inputEndereco" name="inputEndereco" placeholder="Rua, Avenida, Estrada, etc..." required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-2">
                         <label for="inputNumero">Nº:</label>
-                        <input type="tel" class="form-control" id="inputNumero" name="inputNumero" onkeypress="return SoNumeros();" placeholder="Nº do imóvel" required>
+                        <input type="tel" class="form-control" id="inputNumero" name="inputNumero" onkeypress="return SoNumeros();" placeholder="Nº do imóvel">
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-6">
-                        <label for="inputComplemento">Complemento</label>
+                        <label for="inputComplemento">Complemento*:</label>
                         <input type="text" class="form-control" id="inputComplemento" name="inputComplemento" placeholder="Complemento" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-6">
-                        <label for="inputBairro">Bairro</label>
+                        <label for="inputBairro">Bairro*</label>
                         <input type="text" class="form-control" id="inputBairro" name="inputBairro" placeholder="Bairro" required>
                         <div class="valid-feedback">
                         </div>
@@ -122,13 +123,13 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-6">
-                        <label for="inputMunicipio">Município:</label>
+                        <label for="inputMunicipio">Município*:</label>
                         <input type="text" class="form-control" id="inputMunicipio" name="inputMunicipio" placeholder="Municipio" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-6">
-                        <label for="inputCEP">CEP:</label>
+                        <label for="inputCEP">CEP*:</label>
                         <input type="text" class="form-control" id="inputCEP" name="inputCEP" onkeypress="fMasc(this,mCEP)" placeholder="CEP" required>
                         <div class="valid-feedback">
                         </div>
@@ -136,19 +137,19 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-4">
-                        <label for="inputEmail">E-mail:</label>
+                        <label for="inputEmail">E-mail*:</label>
                         <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="seuemail@exemplo.com" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputFixo">Telefone Fixo:</label>
-                        <input type="text" class="form-control" id="inputFixo" name="inputFixo" onkeypress="fMasc(this,mTel)" placeholder="(XX) XXXX-XXXX" required>
+                        <input type="text" class="form-control" id="inputFixo" name="inputFixo" onkeypress="fMasc(this,mTel)" placeholder="(XX) XXXX-XXXX">
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-4">
-                        <label for="inputCelular">Telefone Celular:</label>
+                        <label for="inputCelular">Telefone Celular*:</label>
                         <input type="text" class="form-control" id="inputCelular" name="inputCelular" onkeypress="fMasc(this,mTel)" placeholder="(XX) X XXXX-XXXX" required>
                         <div class="valid-feedback">
                         </div>
@@ -567,17 +568,27 @@
                         <label for="tipoServico">Dados do Solicitante</label>
                     </div>
                     <div class="card-body">
-                        <div class="col-lg-12">
-                            <label for="inputNomeRazaoSocial">Nome / Razão Social:</label>
-                            <input type="text" name="inputNomeRazaoSocial" id="inputNomeRazaoSocial">
+                        <div class="row">
+                            <div class="form-group col-lg">
+                                <label for="inputNome">Nome Completo / Razão Social:</label>
+                                <input type="text" class="form-control p01" id="inputNome" name="inputNome" placeholder="Nome Completo / Razão Social" required>
+                                <div class="valid-feedback">
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-4">
-                            <label for="inputCPFCNPJ">CPF / CNPJ:</label>
-                            <input type="text" name="inputCPFCNPJ" id="inputCPFCNPJ">
-                        </div>
-                        <div class="col-lg-4">
-                            <label for="inputRG">RG:</label>
-                            <input type="text" name="inputRG" id="inputRG">
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label for="inputCPFCNPJ">CPF / CNPJ</label>
+                                <input type="tel" class="form-control p01" id="inputCPFCNPJ" name="inputCPFCNPJ" onkeydown="return fMasc(this,mCPFCNPJ)" placeholder="CPF / CNPJ" required>
+                                <div class="valid-feedback">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="inputRG">RG</label>
+                                <input type="tel" class="form-control p01" id="inputRG" name="inputRG" onkeypress="return SoNumeros();" placeholder="Nº do Registro Geral" required>
+                                <div class="valid-feedback">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -594,17 +605,19 @@
                     <div class="card-header">
                         <label for="tipoServico">Assinatura</label>
                     </div>
-                    <div class="card-body" id="canvasDiv" width="400px" height="300px">
+                    <div class="card-body" id="canvas" width="500" height="300">
+                        <canvas id="signature-pad" name="signature-pad" width="500" height="300"></canvas>
                     </div>
-                    <a class="btn btn-outline-primary col-lg-4" id="clearCanvasSimple" onclick="redraw();">Limpar</a>
+                    <a class="btn btn-outline-primary col-lg-4" id="clearCanvasSimple">Limpar</a>
                     <div class="card-footer">
                     Para finalizar a solicitação, faça acima a sua assinatura.
                     </div>
                 </div>
+                <textarea name="" id="imageCheck" cols="30" rows="10" hidden></textarea>
                 <hr/>
                 <div class="row justify-content-center">
                     <a class="btn btn-lg btn-warning justify-content-start" name="back06" id="back06"><i class="fas fa-arrow-circle-left"></i></a>
-                    <a type="submit" class="btn btn-lg btn-primary justify-content-end" name="save" id="save"><i class="far fa-save"></i></a>
+                    <button type="submit" class="btn btn-lg btn-primary justify-content-end" name="save" id="save"><i class="far fa-save"></i></button>
                 </div></br>
             </div>
             <!-- FIM PARTE 6 -->
