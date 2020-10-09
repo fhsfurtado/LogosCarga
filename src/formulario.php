@@ -53,7 +53,7 @@
         }
     ?>
 </head>
-<body>
+<body id="body">
     <div id="sidebar">
         <nav id="nav" class="navbar navbar-collapse navbar-expand static-top" role="navigation" style="margin-bottom: 0">
             <a class="navbar-brand mr-1" href="<?php echo BASE;?>/index.php"style="background-color: white; border-radius: 6px;"><img src="<?php echo BASE;?>/img/logo.png" height="50px"></a>

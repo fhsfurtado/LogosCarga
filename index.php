@@ -16,7 +16,7 @@
 
     <!-- jQuery AJax-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/signature_pad@3.0.0-beta.3/dist/signature_pad.min.js"></script>
+    <script type="text/javascript" src="<?php echo BASE;?>/js/signature.js"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -63,17 +63,43 @@
 	</div>
     <div id="content" class="content container-fluid" style="display: none">
         <div class="container">
-            <div class="row justify-content-center"> <h2 class="justify-content-center"> Relatório de Carga <i class="fas fa-plug"></i></h2></div><hr/>
+            <div class="row justify-content-center"> <h2 class="justify-content-center"> Serviços <i class="fas fa-plug"></i></h2></div><hr/>
             <div class="row">
-                <div class="card text-center btn cardopt" name="formularioCarga" id="formularioCarga">
-                    <div class="card-body">
-                        <i class="fas fa-file-medical fa-7x"></i>
+
+                <!-- <div class="card justify-content-center text-center" width="100%">
+                    <div class="card text-center btn cardopt" name="formularioCarga" id="formularioCarga">
+                        <div class="card-body">
+                            <i class="fas fa-file-medical fa-6x"></i>
+                        </div>
+                        <div class="card-footer">
+                            Relação de Carga
+                        </div>
                     </div>
-                    <div class="card-footer">
-                        Relação de Carga
+                </div> -->
+                <div class="card justify-content-center text-center" id="novaLigacao" name="novaLigacao" width="100%">
+                    <div class="card-header">
+                        Nova Ligação
+                    </div>
+                    <div class="row card-body">
+                        <div class="card text-center btn cardopt" name="novaLigacaoPF" id="novaLigacaoPF">
+                            <div class="card-body">
+                                <i class="fas fa-user fa-6x"></i>
+                            </div>
+                            <div class="card-footer">
+                                Pessoa Física
+                            </div>
+                        </div>
+                        <div class="card text-center btn cardopt" name="novaLigacaoPJ" id="novaLigacaoPJ">
+                            <div class="card-body">
+                                <i class="fas fa-briefcase fa-6x"></i>
+                            </div>
+                            <div class="card-footer">
+                                Pessoa Jurídica
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </div>    
         </div>
     </div>
     <div class="footer" id="footer" align="center">

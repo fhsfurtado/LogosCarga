@@ -9,76 +9,47 @@ $('#novaLigacaoPF').on("click", function() {
 $('#novaLigacaoPJ').on("click", function() {
     window.location.href = "src\\novaLigacaoPJ.php";
 });
-// tela 01
+// tela 01 - dadosCliente
 //botão voltar
 $('#back').on("click", function() {
-    window.location.href= "index.php";
+    window.location.href= "\\carga\\index.php";
 });
 //botão ir
 $('#next').on("click", function() {
     $("#dadosCliente").fadeOut(250);
-    $("#dadosImovel").fadeIn(260);
+    $("#dadosInfo").fadeIn(260);
     window.scrollTo(0,0);
 });
-//tela 02
+//tela 02 - dadosInfo
 $('#back01').on("click", function() {
-    $("#dadosImovel").fadeOut(250);
+    $("#dadosInfo").fadeOut(250);
     $("#dadosCliente").fadeIn(260);
     window.scrollTo(0,0);
 });
 $('#next01').on("click", function() {
-    $("#dadosImovel").fadeOut(250);
-    $("#dadosSolicitante").fadeIn(260);
+    $("#dadosInfo").fadeOut(250);
+    $("#dadosRelCarga").fadeIn(260);
     window.scrollTo(0,0);
 });
 //tela 03
 $('#back02').on("click", function() {
-    $("#dadosSolicitante").fadeOut(250);
-    $("#dadosImovel").fadeIn(260);
+    $("#dadosRelCarga").fadeOut(250);
+    $("#dadosInfo").fadeIn(260);
     window.scrollTo(0,0);
 });
 $('#next02').on("click", function() {
-    $("#dadosSolicitante").fadeOut(250);
-    $("#dadosSolicitacao").fadeIn(260);
-    window.scrollTo(0,0);
-});
-//tela 04
-$('#back03').on("click", function() {
-    $("#dadosSolicitacao").fadeOut(250);
-    $("#dadosSolicitante").fadeIn(260);
-    window.scrollTo(0,0);
-});
-$('#next03').on("click", function() {
-    $("#dadosSolicitacao").fadeOut(250);
-    $("#dadosCaracteristicas").fadeIn(260);
-    window.scrollTo(0,0);
-});
-//tela 05
-$('#back04').on("click", function() {
-    $("#dadosCaracteristicas").fadeOut(250);
-    $("#dadosSolicitacao").fadeIn(260);
-    window.scrollTo(0,0);
-});
-$('#next04').on("click", function() {
-    $("#dadosCaracteristicas").fadeOut(250);
-    $("#dadosRelCarga").fadeIn(260);
-    window.scrollTo(0,0);
-});
-//tela 06
-$('#back05').on("click", function() {
-    $("#dadosRelCarga").fadeOut(250);
-    $("#dadosCaracteristicas").fadeIn(260);
-    window.scrollTo(0,0);
-});
-$('#next05').on("click", function() {
     $("#dadosRelCarga").fadeOut(250);
     $("#dadosAssinatura").fadeIn(260);
     window.scrollTo(0,0);
 });
-//tela 07 - assinatura
-$('#back06').on("click", function() {
+//tela 04
+$('#back03').on("click", function() {
     $("#dadosAssinatura").fadeOut(250);
     $("#dadosRelCarga").fadeIn(260);
+    window.scrollTo(0,0);
+});
+$('#save').on("click", function() {
+    alert('END GAME');
     window.scrollTo(0,0);
 });
 // fim controle dos botões
@@ -181,7 +152,6 @@ function removeLinha(item) {
 }
 // a priori os campos improtantes estão vazios, então aqui eu os desabilito pra forçar o usuário a preencher
 document.getElementById('addEquip').removeAttribute("onclick");
-document.getElementById('next05').setAttribute('disabled','disabled');
 /*enquanto o valor do input da potência estiver vazio, removo o atributo do botão Adicionar, para evitar valor
 vazio no card. Se não tem valor, vai "sujar" o formulário*/
 $('#inputPotenciaEquipamento').change(function () {
@@ -248,34 +218,12 @@ function mTel(tel) {
     }
     return tel;
 }
-function mCPFCNPJ(v){
-
-    //Remove tudo o que não é dígito
-    v=v.replace(/\D/g,"");
-    if (v.length > 12) { //CNPJ
-        //Coloca ponto entre o segundo e o terceiro dígitos
-        v=v.replace(/^(\d{2})(\d)/,"$1.$2");
-
-        //Coloca ponto entre o quinto e o sexto dígitos
-        v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3");
-
-        //Coloca uma barra entre o oitavo e o nono dígitos
-        v=v.replace(/\.(\d{3})(\d)/,".$1/$2");
-
-        //Coloca um hífen depois do bloco de quatro dígitos
-        v=v.replace(/(\d{4})(\d)/,"$1-$2");
-    } else { //CPF
-        //Coloca um ponto entre o terceiro e o quarto dígitos
-        v=v.replace(/(\d{3})(\d)/,"$1.$2");
-
-        //Coloca um ponto entre o terceiro e o quarto dígitos
-        //de novo (para o segundo bloco de números)
-        v=v.replace(/(\d{3})(\d)/,"$1.$2");
-
-        //Coloca um hífen entre o terceiro e o quarto dígitos
-        v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
-    }
-    return v;
+function mCPF(cpf){
+    cpf=cpf.replace(/\D/g,"")
+    cpf=cpf.replace(/(\d{3})(\d)/,"$1.$2")
+    cpf=cpf.replace(/(\d{3})(\d)/,"$1.$2")
+    cpf=cpf.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+    return cpf
 }
 function mCEP(cep){
     cep=cep.replace(/\D/g,"");
