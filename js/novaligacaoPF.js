@@ -50,6 +50,7 @@ $('#back03').on("click", function() {
 });
 $('#save').on("click", function() {
     alert('END GAME');
+    $('#formNovaLigacao').submit();
     window.scrollTo(0,0);
 });
 // fim controle dos botões
@@ -132,6 +133,8 @@ function addEquip() {
     //"limpando" os valores para que o cliente possa refazer o processo de adição
     document.getElementById('selEquipamento').value = 'Lâmpada Compacta/Fria';
     document.getElementById('inputPotenciaEquipamento').value = '';
+    $('#labelPotenciaEquip').show();
+    $('#labelPotenciaAr').hide();
     //esse input oculto "hidden" carregará pro formulário a quantidade de equipamentos que foram adicionados
     document.getElementById('qtdeEquipAdd').value = qtdEquip;
     //escondendo a label que informa, de início, que ainda não tem equipamentos adicionados.

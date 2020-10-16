@@ -64,8 +64,9 @@
 	    Carregando...
 	</div>
     <div id="content" class="content container-fluid" style="display: none">
-        <form id="formNovaLigacao" name="formNovaLigacao" class="needs-validation was-validated" action="gravaRel.php" method="post">
+        <form id="formNovaLigacao" name="formNovaLigacao" class="needs-validation was-validated" action="cadNovaLigacao.php" method="POST">
             <!-- PARTE 1 - DADOS DO CLIENTE -->
+            <input type="hidden" name="tipoAtendimento" value="cpf">
             <div class="card container" name="dadosCliente" id="dadosCliente">
                 <div class="card-header row justify-content-center">
                     <label for="dadosCliente"><h4>Cliente</h4></label>
@@ -83,8 +84,8 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-lg">
-                        <label for="inputCPFCNPJ">CPF*:</label>
-                        <input type="tel" class="form-control p01" id="inputCPFCNPJ" name="inputCPFCNPJ" onkeydown="return fMasc(this,mCPF)" placeholder="CPF / CNPJ" required>
+                        <label for="inputCPF">CPF*:</label>
+                        <input type="tel" class="form-control p01" id="inputCPF" name="inputCPF" onkeydown="return fMasc(this,mCPF)" placeholder="Nº do CPF" minlength="14" maxlength="14" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -124,7 +125,7 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="inputCEP">CEP*:</label>
-                        <input type="text" class="form-control" id="inputCEP" name="inputCEP" onkeypress="fMasc(this,mCEP)" placeholder="CEP" required>
+                        <input type="text" class="form-control" id="inputCEP" name="inputCEP" onkeypress="fMasc(this,mCEP)" placeholder="CEP" minlength="10" maxlength="10" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -189,7 +190,7 @@
                 <div class="card-header row justify-content-center">
                     <label for="dadosCliente"><h4>Nossos Informativos</h4></label>
                 </div>
-                <div class="row card-body text-center" >
+                <div class="row card-body justify-content-center text-center" >
                     <div class="form-group col-lg-8">
                         <div class="form-check">
                             <label for="inputBairro">Deseja receber informações e serviços da ENEL via e-mail Fácil e Torpedo Fácil?</label>
@@ -273,7 +274,7 @@
                     Para finalizar a solicitação, faça acima a sua assinatura.
                     </div>
                 </div>
-                <textarea name="" id="imageCheck" cols="30" rows="10" hidden></textarea>
+                <textarea name="imageCheck" id="imageCheck" cols="30" rows="10" hidden></textarea>
                 <hr/>
                 <div class="row justify-content-center">
                     <a class="btn btn-lg btn-warning justify-content-start" name="back03" id="back03"><i class="fas fa-arrow-circle-left"></i></a>
