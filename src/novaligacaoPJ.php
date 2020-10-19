@@ -1,16 +1,10 @@
 <?php
     require_once('../config.php');
-    require_once('conn/connect.php');
-    $uf = 9; // GO = 9
-    $query = $bd->prepare('SELECT id_city, nome_cidade FROM tb_city WHERE uf_cidade = :uf');
-    $query->bindParam(':uf',$uf);
-    $query->execute();
-    $cidades = $query->fetchAll(PDO::FETCH_OBJ);
 ?> 
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Nova Ligação - Pessoa Física </title>
+    <title> Nova Ligação - Pessoa Jurídica </title>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -75,14 +69,14 @@
             <input type="hidden" name="tipoAtendimento" value="cpf">
             <div class="card container" name="dadosCliente" id="dadosCliente">
                 <div class="card-header row justify-content-center">
-                    <label for="dadosCliente"><h4>Cliente</h4></label>
+                    <label for="dadosCliente"><h4>Empresa</h4></label>
                 </div></br>
                 <div class="row justify-content-center">
                     <label for="dadosCliente"><h5>Dados Pessoais</h5></label>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg">
-                        <label for="inputNome">Nome Completo*:</label>
+                        <label for="inputNome">Razão Social*:</label>
                         <input type="text" class="form-control p01" id="inputNome" name="inputNome" placeholder="Nome Completo" required>
                         <div class="valid-feedback">
                         </div>
@@ -90,8 +84,8 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-lg">
-                        <label for="inputCPF">CPF*:</label>
-                        <input type="tel" class="form-control p01" id="inputCPF" name="inputCPF" onkeydown="return fMasc(this,mCPF)" placeholder="Nº do CPF" minlength="14" maxlength="14" required>
+                        <label for="inputCPF">CNPJ*:</label>
+                        <input type="tel" class="form-control p01" id="inputCPF" name="inputCPF" onkeydown="return fMasc(this,mCNPJ)" placeholder="Nº do CNPJ" minlength="14" maxlength="14" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -308,6 +302,5 @@
     <script src="<?php echo BASE;?>/vendor/font-awesome/js/all.min.js"></script>
     <script src="<?php echo BASE;?>/vendor/font-awesome/js/fontawesome.min.js"></script>
     <script src="<?php echo BASE;?>/js/novaligacao.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
     </body>
 </html>

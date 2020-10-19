@@ -1,15 +1,5 @@
 <?php
     require_once('config.php');
-    $msgGet = NULL;
-    if(isset($_GET['erro'])){
-        $action = @$_GET['erro'];
-        if($action==0){
-            $msgGet = '<div class="alert alert-danger" role="alert"> Usuário desabilitado. Favor contacte o gestor para averiguar seu status. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-        }
-        if($action==1){
-            $msgGet = '<div class="alert alert-danger" role="alert"> Ops... Usuário e/ou senha não conferem. Verifique seus dados e tente novamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-        }
-    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,42 +54,52 @@
 <body>
     <div id="sidebar">
         <nav id="nav" class="navbar navbar-collapse navbar-expand static-top" role="navigation" style="margin-bottom: 0">
+            <a class="navbar-brand mr-1" href="index.php"style="background-color: white; border-radius: 6px;"><img src="img/logo.png" height="50px"></a>
         </nav>
     </div>
     <div id="loading" style="display: block" class="loading" align="center">
 		<img src="img/preloader.gif"><br>
 	    Carregando...
 	</div>
-    <div id="content" class="content container-fluid justify-content-center text-center" style="display: none">
+    <div id="content" class="content container-fluid" style="display: none">
         <div class="container">
-            <?php echo $msgGet;?>
-            <div class="row justify-content-center text-center">
-                <div class="col-lg-4 card">
-                    <div class="card-header">
-                        <a class="navbar-brand mr-1" href="index.php"><img src="img/logo.png" width="250" alt="ENEL Atendimento"></a>
+            <div class="row justify-content-center"> <h2 class="justify-content-center"> Serviços <i class="fas fa-plug"></i></h2></div><hr/>
+            <div class="row">
+
+                <!-- <div class="card justify-content-center text-center" width="100%">
+                    <div class="card text-center btn cardopt" name="formularioCarga" id="formularioCarga">
+                        <div class="card-body">
+                            <i class="fas fa-file-medical fa-6x"></i>
+                        </div>
+                        <div class="card-footer">
+                            Relação de Carga
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Login</h5>
-                        <form action="login.php" method="POST">
-                            <p class="card-text">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="inputLogin" name="inputLogin" placeholder="Login" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" id="inputSenha" name="inputSenha" placeholder="Senha" required>
-                                </div>
-                                <button type="submit" class="btn btn-outline-primary">Entrar</button>
-                            </p>
-                        </form>
+                </div> -->
+                <div class="card justify-content-center text-center" id="novaLigacao" name="novaLigacao" width="100%">
+                    <div class="card-header">
+                        Nova Ligação
+                    </div>
+                    <div class="row card-body">
+                        <div class="card text-center btn cardopt" name="novaLigacaoPF" id="novaLigacaoPF">
+                            <div class="card-body">
+                                <i class="fas fa-user fa-6x"></i>
+                            </div>
+                            <div class="card-footer">
+                                Pessoa Física
+                            </div>
+                        </div>
+                        <div class="card text-center btn cardopt" name="novaLigacaoPJ" id="novaLigacaoPJ">
+                            <div class="card-body">
+                                <i class="fas fa-briefcase fa-6x"></i>
+                            </div>
+                            <div class="card-footer">
+                                Pessoa Jurídica
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div></br>
-            <div class="row justify-content-center text-center">
-                OU
-            </div><hr/>
-            <div class="row justify-content-center text-center">
-                <a class="btn btn-outline-info" href="express.php">Modo Express</a>
-            </div><hr/>
+            </div>    
         </div>
     </div>
     <div class="footer" id="footer" align="center">

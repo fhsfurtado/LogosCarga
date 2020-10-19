@@ -123,7 +123,7 @@
             $status='FAIL';
             break;
     }
-    header("refresh:10;url=../index.php");
+    header("refresh:10;url=../express.php");
     if($status == 'OK'){
         $saudacao = 'Tudo certo, '.$nome.'!';
         $gif = '<img src="../img/check.gif" alt="OK!">';

@@ -12,7 +12,7 @@ $('#novaLigacaoPJ').on("click", function() {
 // tela 01 - dadosCliente
 //botão voltar
 $('#back').on("click", function() {
-    window.location.href= "\\carga\\index.php";
+    window.location.href= "\\carga\\express.php";
 });
 //botão ir
 $('#next').on("click", function() {
@@ -114,6 +114,20 @@ $('#selEquipamento').change(function () {
         $('#labelPotenciaEquip').show();
         $('#labelPotenciaAr').hide();
     }
+});
+$("#inputCEP").(function(){
+    $.ajax({
+        url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
+        dataType: 'json',
+        success: function(resposta){
+            $("#inputEndereco").val(resposta.logradouro);
+            $("#inputComplemento").val(resposta.complemento);
+            $("#inputBairro").val(resposta.bairro);
+            $("#inputMunicipio").val(resposta.localidade);
+            //$("#uf").val(resposta.uf);
+            $("#inputNumero").focus();
+        }
+    });
 });
 //adicionar equipamentos à lista listEquipamentos
 var qtdEquip = 0;
@@ -220,6 +234,14 @@ function mTel(tel) {
         tel=tel.replace(/(.{4})$/,"-$1");
     }
     return tel;
+}
+function mCNPJ(cnpj){
+    cnpj=cnpj.replace(/\D/g,"")
+    cnpj=cnpj.replace(/^(\d{2})(\d)/,"$1.$2")
+    cnpj=cnpj.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3")
+    cnpj=cnpj.replace(/\.(\d{3})(\d)/,".$1/$2")
+    cnpj=cnpj.replace(/(\d{4})(\d)/,"$1-$2")
+    return cnpj
 }
 function mCPF(cpf){
     cpf=cpf.replace(/\D/g,"")
