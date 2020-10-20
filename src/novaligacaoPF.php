@@ -1,11 +1,6 @@
 <?php
+    header('Access-Control-Allow-Origin: *');
     require_once('../config.php');
-    require_once('conn/connect.php');
-    $uf = 9; // GO = 9
-    $query = $bd->prepare('SELECT id_city, nome_cidade FROM tb_city WHERE uf_cidade = :uf');
-    $query->bindParam(':uf',$uf);
-    $query->execute();
-    $cidades = $query->fetchAll(PDO::FETCH_OBJ);
 ?> 
 <!DOCTYPE html>
 <html>
@@ -62,7 +57,8 @@
 <body>
     <div id="sidebar">
         <nav id="nav" class="navbar navbar-collapse navbar-expand static-top" role="navigation" style="margin-bottom: 0">
-            <a class="navbar-brand mr-1" href="<?php echo BASE;?>/index.php"style="background-color: white; border-radius: 6px;"><img src="<?php echo BASE;?>/img/logo.png" height="50px"></a>
+            <a class="navbar-brand mr-1" href="<?php echo BASE;?>/express.php"style="background-color: white; border-radius: 6px;"><img src="<?php echo BASE;?>/img/logo.png" height="50px"></a>
+            <input type="text" id="data-hora" class="col justify-content-center text-center">
         </nav>
     </div>
     <div id="loading" style="display: block" class="loading" align="center">
@@ -72,7 +68,7 @@
     <div id="content" class="content container-fluid" style="display: none">
         <form id="formNovaLigacao" name="formNovaLigacao" class="needs-validation was-validated" action="cadNovaLigacao.php" method="POST">
             <!-- PARTE 1 - DADOS DO CLIENTE -->
-            <input type="hidden" name="tipoAtendimento" value="cpf">
+            <input type="hidden" name="tipoAtendimento" value="cnpj">
             <div class="card container" name="dadosCliente" id="dadosCliente">
                 <div class="card-header row justify-content-center">
                     <label for="dadosCliente"><h4>Cliente</h4></label>
@@ -82,7 +78,7 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-lg">
-                        <label for="inputNome">Nome Completo*:</label>
+                        <label for="inputNome">Razão Social*:</label>
                         <input type="text" class="form-control p01" id="inputNome" name="inputNome" placeholder="Nome Completo" required>
                         <div class="valid-feedback">
                         </div>
@@ -90,68 +86,74 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-lg">
-                        <label for="inputCPF">CPF*:</label>
-                        <input type="tel" class="form-control p01" id="inputCPF" name="inputCPF" onkeydown="return fMasc(this,mCPF)" placeholder="Nº do CPF" minlength="14" maxlength="14" required>
+                        <label for="inputCPF">CNPJ*:</label>
+                        <input type="tel" class="form-control p01" id="inputCPF" name="inputCPF" onkeydown="return fMasc(this,mCPF)" placeholder="Nº do CNPJ" minlength="18" maxlength="18" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-lg-10">
+                    <div class="form-group col-lg-4">
+                        <label for="inputCEP">CEP*:</label>
+                        <input type="tel" class="form-control p01" id="inputCEP" name="inputCEP" onkeydown="fMasc(this,mCEP)" placeholder="CEP" minlength="10" maxlength="10" required>
+                        <div class="valid-feedback">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-4 justify-content-center text-center">
+                        <label for="pesquisarCEP"> </label>
+                        <button type="button" id="pesquisarCEP" class="btn btn-outline-primary">Pesquisar CEP</button>
+                    </div>
+                </div>
+                <div class="row address-field">
+                    <div class="form-group col-lg-8">
                         <label for="inputEndereco">Endereço da ligação*:</label>
-                        <input type="text" class="form-control" id="inputEndereco" name="inputEndereco" placeholder="Rua, Avenida, Estrada, etc..." required>
+                        <input type="text" class="form-control p01" id="inputEndereco" name="inputEndereco" placeholder="Rua, Avenida, Estrada, etc..." required>
                         <div class="valid-feedback">
                         </div>
                     </div>
-                    <div class="form-group col-lg-2">
-                        <label for="inputNumero">Nº:</label>
-                        <input type="tel" class="form-control" id="inputNumero" name="inputNumero" onkeypress="return SoNumeros();" placeholder="Nº do imóvel">
-                    </div>
                 </div>
-                <div class="row">
+                <div class="row address-field">
                     <div class="form-group col-lg-6">
                         <label for="inputComplemento">Complemento*:</label>
-                        <input type="text" class="form-control" id="inputComplemento" name="inputComplemento" placeholder="Complemento" required>
+                        <input type="text" class="form-control p01" id="inputComplemento" name="inputComplemento" placeholder="Complemento" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="inputBairro">Bairro*</label>
-                        <input type="text" class="form-control" id="inputBairro" name="inputBairro" placeholder="Bairro" required>
+                        <input type="text" class="form-control p01" id="inputBairro" name="inputBairro" placeholder="Bairro" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group col-lg-6">
+                <div class="row address-field">
+                    <div class="form-group col-lg-8">
                         <label for="inputMunicipio">Município*:</label>
-                        <input type="text" class="form-control" id="inputMunicipio" name="inputMunicipio" placeholder="Municipio" required>
+                        <input type="text" class="form-control p01" id="inputMunicipio" name="inputMunicipio" placeholder="Municipio" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
-                    <div class="form-group col-lg-6">
-                        <label for="inputCEP">CEP*:</label>
-                        <input type="text" class="form-control" id="inputCEP" name="inputCEP" onkeypress="fMasc(this,mCEP)" placeholder="CEP" minlength="10" maxlength="10" required>
-                        <div class="valid-feedback">
-                        </div>
+                    <div class="form-group col-lg-4">
+                        <label for="inputNumero">Nº:</label>
+                        <input type="tel" class="form-control" id="inputNumero" name="inputNumero" onkeypress="return SoNumeros();" placeholder="Nº do imóvel">
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-4">
                         <label for="inputEmail">E-mail*:</label>
-                        <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="seuemail@exemplo.com" required>
+                        <input type="email" class="form-control p01" id="inputEmail" name="inputEmail" placeholder="seuemail@exemplo.com" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputFixo">Telefone Fixo:</label>
-                        <input type="text" class="form-control" id="inputFixo" name="inputFixo" onkeypress="fMasc(this,mTel)" placeholder="(XX) XXXX-XXXX">
+                        <input type="text" class="form-control" id="inputFixo" name="inputFixo" onkeydown="fMasc(this,mTel)" placeholder="(XX) XXXX-XXXX">
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputCelular">Telefone Celular*:</label>
-                        <input type="text" class="form-control" id="inputCelular" name="inputCelular" onkeypress="fMasc(this,mTel)" placeholder="(XX) X XXXX-XXXX" required>
+                        <input type="text" class="form-control p01" id="inputCelular" name="inputCelular" onkeydown="fMasc(this,mTel)" placeholder="(XX) X XXXX-XXXX" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -308,6 +310,5 @@
     <script src="<?php echo BASE;?>/vendor/font-awesome/js/all.min.js"></script>
     <script src="<?php echo BASE;?>/vendor/font-awesome/js/fontawesome.min.js"></script>
     <script src="<?php echo BASE;?>/js/novaligacao.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
     </body>
 </html>

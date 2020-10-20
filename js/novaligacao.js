@@ -49,7 +49,6 @@ $('#back03').on("click", function() {
     window.scrollTo(0,0);
 });
 $('#save').on("click", function() {
-    alert('END GAME');
     $('#formNovaLigacao').submit();
     window.scrollTo(0,0);
 });
@@ -68,9 +67,9 @@ $(document).on('keyup', '.form input', function(){
     var val09 = $('#inputEmail').val();
     var val10 = $('#inputCelular').val();
     if(val01 != "" || val02 != "" || val03 != "" || val04 != "" || val05 != "" || val06 != "" || val07 != "" || val08 != "" || val09 != "" || val10 != ""){
-        $('#next').setAttribute('disabled','disabled');
+        $('#next').hide();
     }else{
-        $('#next').removeAttribute('disabled');
+        $('#next').show();
     }
 });
 
@@ -115,20 +114,37 @@ $('#selEquipamento').change(function () {
         $('#labelPotenciaAr').hide();
     }
 });
-$("#inputCEP").(function(){
-    $.ajax({
-        url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
-        dataType: 'json',
-        success: function(resposta){
-            $("#inputEndereco").val(resposta.logradouro);
-            $("#inputComplemento").val(resposta.complemento);
-            $("#inputBairro").val(resposta.bairro);
-            $("#inputMunicipio").val(resposta.localidade);
-            //$("#uf").val(resposta.uf);
-            $("#inputNumero").focus();
-        }
-    });
+$('.address-field').hide();
+$("#pesquisarCEP").click(function(){
+    if($('#inputCEP').val() != ''){
+        $.ajax({
+            url: 'https://viacep.com.br/ws/'+$('#inputCEP').val().replace(/[^\w\-]+/g, '')+'/json/unicode/',
+            dataType: 'json',
+            success: function(resposta){
+                $('.address-field').show();
+                $("#inputEndereco").val(resposta.logradouro);
+                $("#inputComplemento").val(resposta.complemento);
+                $("#inputBairro").val(resposta.bairro);
+                $("#inputMunicipio").val(resposta.localidade);
+                //$("#uf").val(resposta.uf);
+                $("#inputComplemento").focus();
+            }
+        });
+    } else{
+        alert('Por favor, nos informe o seu CEP!');
+    }
 });
+$('#data-hora').change(function(){
+    var input = document.getElementsByClassName('p01');
+    for( var i=0; i<=(input.length-1); i++ ){
+        console.log(input[i].value);
+		if( input[i].value == ''){
+            document.getElementById('next').hide();
+        } else{
+            $('#next').show();
+        }
+	}
+  });
 //adicionar equipamentos à lista listEquipamentos
 var qtdEquip = 0;
 function addEquip() {
@@ -241,14 +257,14 @@ function mCNPJ(cnpj){
     cnpj=cnpj.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3")
     cnpj=cnpj.replace(/\.(\d{3})(\d)/,".$1/$2")
     cnpj=cnpj.replace(/(\d{4})(\d)/,"$1-$2")
-    return cnpj
+    return cnpj;
 }
 function mCPF(cpf){
     cpf=cpf.replace(/\D/g,"")
     cpf=cpf.replace(/(\d{3})(\d)/,"$1.$2")
     cpf=cpf.replace(/(\d{3})(\d)/,"$1.$2")
     cpf=cpf.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
-    return cpf
+    return cpf;
 }
 function mCEP(cep){
     cep=cep.replace(/\D/g,"");
@@ -310,3 +326,20 @@ saveButton.addEventListener("click", function(event) {
 cancelButton.addEventListener('click', function(event) {
     signaturePad.clear();
 });
+
+//data e hora - JS
+const zeroFill = n => {
+    return ('0' + n).slice(-2);
+}
+
+// Cria intervalo
+const interval = setInterval(() => {
+    // Pega o horário atual
+    const now = new Date();
+
+    // Formata a data conforme dd/mm/aaaa hh:ii:ss
+    const dataHora = zeroFill(now.getUTCDate()) + '/' + zeroFill((now.getMonth() + 1)) + '/' + now.getFullYear() + ' ' + zeroFill(now.getHours()) + ':' + zeroFill(now.getMinutes()) + ':' + zeroFill(now.getSeconds());
+
+    // Exibe na tela usando a div#data-hora
+    document.getElementById('data-hora').value = dataHora;
+}, 1000);

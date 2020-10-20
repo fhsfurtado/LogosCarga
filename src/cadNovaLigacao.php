@@ -110,7 +110,7 @@
             // agora, salvar os equipamentos que foram repassados na relação de carga
             $porta=1;
             for($i=0;$i<$qtdeEquips;$i++){
-                $stmt = $bd->prepare('INSERT INTO tb_solicitacao(prot_solicitacao,nome_equip,qtde_equip,potencia_equip) VALUES (:ot_solicitacao,:nome_equip,:qtde_equip,:potencia_equip)');
+                $stmt = $bd->prepare('INSERT INTO tb_solicitacao(prot_solicitacao,nome_equip,qtde_equip,potencia_equip) VALUES (:prot_solicitacao,:nome_equip,:qtde_equip,:potencia_equip)');
                 $stmt->bindParam(':prot_solicitacao',$protocolo);
                 $stmt->bindParam(':nome_equip',$_POST['hiddenDataNomeEquip'.$i]);
                 $stmt->bindParam(':qtde_equip',$porta);
