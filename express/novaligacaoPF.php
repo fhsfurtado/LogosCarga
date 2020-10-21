@@ -58,7 +58,7 @@
     <div id="sidebar">
         <nav id="nav" class="navbar navbar-collapse navbar-expand static-top" role="navigation" style="margin-bottom: 0">
             <a class="navbar-brand mr-1" href="<?php echo BASE;?>/express.php"style="background-color: white; border-radius: 6px;"><img src="<?php echo BASE;?>/img/logo.png" height="50px"></a>
-            <input type="text" id="data-hora" class="col justify-content-center text-center">
+            <input type="hidden" id="data-hora" class="col justify-content-center text-center">
         </nav>
     </div>
     <div id="loading" style="display: block" class="loading" align="center">

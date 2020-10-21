@@ -343,3 +343,13 @@ const interval = setInterval(() => {
     // Exibe na tela usando a div#data-hora
     document.getElementById('data-hora').value = dataHora;
 }, 1000);
+//service worker
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(function () {
+        console.log('service worker registered');
+      })
+      .catch(function () {
+        console.warn('service worker failed');
+      });
+  }

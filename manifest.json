@@ -1,0 +1,10 @@
+{
+  "name": "ENEL Express",
+  "short_name": "ENEL Express",
+  "theme_color": "#ff0000",
+  "background_color": "#d4d2cd",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "scope": "/carga",
+  "start_url": "/carga"
+}

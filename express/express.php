@@ -12,7 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Fabio Henrique Silva furtado" content="">
 
-    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="<?php echo BASE;?>/img/icon.png" type="image/x-icon" />
+
+    <!-- Manifest JSON-->
+    <link rel="manifest" href="../manifest.json">
 
     <!-- jQuery AJax-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -103,7 +106,7 @@
         </div>
     </div>
     <div class="footer" id="footer" align="center">
-        Powered by: <img src="img/logos.png" width="90px" alt=""> &copy;
+        Powered by: <img src="<?php echo BASE;?>/img/logos.png" width="90px" alt=""> &copy;
     </div>
     
     <!-- END OF CODE -->

@@ -337,3 +337,12 @@ saveButton.addEventListener("click", function(event) {
 cancelButton.addEventListener('click', function(event) {
     signaturePad.clear();
 });
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(function () {
+        console.log('service worker registered');
+      })
+      .catch(function () {
+        console.warn('service worker failed');
+      });
+  }
