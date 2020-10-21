@@ -87,7 +87,7 @@
                 <div class="row">
                     <div class="form-group col-lg">
                         <label for="inputCPF">CNPJ*:</label>
-                        <input type="tel" class="form-control p01" id="inputCPF" name="inputCPF" onkeydown="return fMasc(this,mCPF)" placeholder="Nº do CNPJ" minlength="18" maxlength="18" required>
+                        <input type="tel" class="form-control p01" id="inputCPF" name="inputCPF" onkeydown="return fMasc(this,mCPF)" placeholder="Nº do CPF" minlength="14" maxlength="14" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -147,13 +147,13 @@
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputFixo">Telefone Fixo:</label>
-                        <input type="text" class="form-control" id="inputFixo" name="inputFixo" onkeydown="fMasc(this,mTel)" placeholder="(XX) XXXX-XXXX">
+                        <input type="text" class="form-control" id="inputFixo" name="inputFixo" onkeydown="fMasc(this,mTel)" minlength="13" maxlength="13" placeholder="(XX) XXXX-XXXX">
                         <div class="valid-feedback">
                         </div>
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputCelular">Telefone Celular*:</label>
-                        <input type="text" class="form-control p01" id="inputCelular" name="inputCelular" onkeydown="fMasc(this,mTel)" placeholder="(XX) X XXXX-XXXX" required>
+                        <input type="text" class="form-control p01" id="inputCelular" name="inputCelular" onkeydown="fMasc(this,mTel)" minlength="14" maxlength="14" placeholder="(XX) X XXXX-XXXX" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
