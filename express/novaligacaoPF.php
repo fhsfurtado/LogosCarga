@@ -68,7 +68,7 @@
     <div id="content" class="content container-fluid" style="display: none">
         <form id="formNovaLigacao" name="formNovaLigacao" class="needs-validation was-validated" action="cadNovaLigacao.php" method="POST">
             <!-- PARTE 1 - DADOS DO CLIENTE -->
-            <input type="hidden" name="tipoAtendimento" value="cnpj">
+            <input type="hidden" name="tipoAtendimento" value="cpf">
             <div class="card container" name="dadosCliente" id="dadosCliente">
                 <div class="card-header row justify-content-center">
                     <label for="dadosCliente"><h4>Cliente</h4></label>

@@ -4,15 +4,15 @@ $('#formularioCarga').on("click", function() {
     window.location.href = "src\\formulario.php";
 });
 $('#novaLigacaoPF').on("click", function() {
-    window.location.href = "src\\novaLigacaoPF.php";
+    window.location.href = "express\\novaLigacaoPF.php";
 });
 $('#novaLigacaoPJ').on("click", function() {
-    window.location.href = "src\\novaLigacaoPJ.php";
+    window.location.href = "express\\novaLigacaoPJ.php";
 });
 // tela 01 - dadosCliente
 //botão voltar
 $('#back').on("click", function() {
-    window.location.href= "\\carga\\express.php";
+    window.location.href= "express.php";
 });
 //botão ir
 $('#next').on("click", function() {

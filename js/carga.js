@@ -4,10 +4,10 @@ $('#formularioCarga').on("click", function() {
     window.location.href = "src\\formulario.php";
 });
 $('#novaLigacaoPF').on("click", function() {
-    window.location.href = "src\\novaLigacaoPF.php";
+    window.location.href = "novaLigacaoPF.php";
 });
 $('#novaLigacaoPJ').on("click", function() {
-    window.location.href = "src\\novaLigacaoPJ.php";
+    window.location.href = "novaLigacaoPJ.php";
 });
 // tela 01
 //botão voltar

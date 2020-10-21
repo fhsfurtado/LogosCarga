@@ -68,6 +68,17 @@ CREATE TABLE IF NOT EXISTS tb_users(
     FOREIGN KEY(lotacao) REFERENCES tb_lotacao(id_lotacao)
 );
 
+CREATE TABLE IF NOT EXISTS tb_login(
+    id_login int AUTO_INCREMENT,
+    id_user int(4) NOT NULL,
+    id_lotacao int(4) NOT NULL,
+    ip varchar(15) NOT NULL, 
+    data_login date NOT NULL DEFAULT CURRENT_DATE,
+    PRIMARY KEY(id_login),
+    FOREIGN KEY (id_user) REFERENCES tb_users(id_user),
+    FOREIGN KEY (id_lotacao) REFERENCES tb_users(lotacao)
+);
+
 CREATE TABLE IF NOT EXISTS tb_clientes (
 	id_cliente int(8) AUTO_INCREMENT,
     nome_cliente varchar(50) NOT NULL,

@@ -98,7 +98,7 @@
                 OU
             </div><hr/>
             <div class="row justify-content-center text-center">
-                <a class="btn btn-outline-info" href="express.php">Modo Express</a>
+                <a class="btn btn-outline-info" href="express/express.php">Modo Express</a>
             </div><hr/>
         </div>
     </div>
