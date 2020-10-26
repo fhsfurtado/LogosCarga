@@ -15,6 +15,28 @@ $('#back').on("click", function() {
     window.location.href= "express.php";
 });
 //botão ir
+$('#next').hide();
+var elements = document.getElementsByClassName("p01");
+for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener("keydown", function() {
+    if(document.getElementById('tipoAtendimento').value == 'cpf'){
+        if(document.getElementById('inputNome').value == '' || document.getElementById('inputCPF').value == '' || document.getElementById('inputCEP').value == '' || document.getElementById('inputEndereco').value == '' || document.getElementById('inputComplemento').value == '' || document.getElementById('inputBairro').value == '' || document.getElementById('inputMunicipio').value == '' || document.getElementById('inputEmail').value == '' || document.getElementById('inputCelular').value == '')
+        {
+            document.getElementById('next').style.display='none';
+        } else {
+            document.getElementById('next').style.display='inline';
+        }
+    }
+    if($('#tipoAtendimento').value == 'cnpj'){
+        if($('#inputNome').value == '' || $('#inputCNPJ').value == '' || $('#inputCEP').value == '' || $('#inputEndereco').value == '' || $('#inputComplemento').value == '' || $('#inputBairro').value == '' || $('#inputMunicipio').value == '' || $('#inputEmail').value == '' || $('#inputCelular').value == '')
+        {
+            document.getElementById('next').style.display='none';
+        } else {
+            document.getElementById('next').style.display='inline';
+        }
+    }
+  });
+}
 $('#next').on("click", function() {
     $("#dadosCliente").fadeOut(250);
     $("#dadosInfo").fadeIn(260);
@@ -49,59 +71,21 @@ $('#back03').on("click", function() {
     window.scrollTo(0,0);
 });
 $('#save').on("click", function() {
-    $('#formNovaLigacao').submit();
-    window.scrollTo(0,0);
+    $('#formNovaLigacao').submit(function () {
+        var vazios = $("input[type=email]").filter(function() {
+            return !this.value;
+        }).get();
+        if (vazios.length) {
+            $(vazios).addClass('vazio');
+            window.scrollTo(0,0);
+            alert("Todos os campos devem ser preenchidos.");
+            return false;
+        } else{
+            return true;
+        }
+    });
 });
 // fim controle dos botões
-// as funções abaixo não permitirão que o usuário prossiga no formulário enquanto não completar os dados obrigatórios
-//tela 1
-$(document).on('keyup', '.form input', function(){
-    var val01 = $('#inputNome').val();
-    var val02 = $('#inputCPFCNPJ').val();
-    var val03 = $('#inputRG').val();
-    var val04 = $('#inputEndereco').val();
-    var val05 = $('#inputComplemento').val();
-    var val06 = $('#inputBairro').val();
-    var val07 = $('#inputMunicipio').val();
-    var val08 = $('#inputCEP').val();
-    var val09 = $('#inputEmail').val();
-    var val10 = $('#inputCelular').val();
-    if(val01 != "" || val02 != "" || val03 != "" || val04 != "" || val05 != "" || val06 != "" || val07 != "" || val08 != "" || val09 != "" || val10 != ""){
-        $('#next').hide();
-    }else{
-        $('#next').show();
-    }
-});
-
-/* Existe a possibilidade de o solicitante do serviço e o cliente serem distintos. (?)
-Se forem o mesmo, não preenche os dados. Se forem distintos, mostra o formulário para preenchimento*/
-$('input[name="radioSolicIsCliente"]').change(function () {
-    if ($('input[name="radioSolicIsCliente"]:checked').val() === "nao") {
-        $('#mesmoCliente').fadeIn(260);
-    }
-    if ($('input[name="radioSolicIsCliente"]:checked').val() === "sim") {
-        $('#mesmoCliente').fadeOut(250);
-    }
-});
-// a div de informações extras do poste tipo coluna inicia oculta. Explicação no próximo comment
-$('#extraPosteColuna').hide();
-/* para os postes do tipo Subterrâneo e Coluna existem informações extras exigidas pelo cliente.
-O Subterrâneo exibe a informação do tamanho do duto em milímetros. A de Coluna exige o nº da ART/RRT Civil.
-Com a função abaixo, mostro somente quando uma das opções está marcada com sua respectiva informação. */
-$('input[name="radioTipoPoste"]').change(function () {
-    if ($('input[name="radioTipoPoste"]:checked').val() === "Subterrâneo") {
-        // A #extraPosteSubterraneo é uma div com as informações extras do poste de tipo Subterrâneo.
-        $('#extraPosteSubterraneo').show();
-    } else{
-        $('#extraPosteSubterraneo').hide();
-    }
-    if ($('input[name="radioTipoPoste"]:checked').val() === "Coluna") {
-        // A #extraPosteColuna é uma div com as informações extras do poste de tipo Coluna.
-        $('#extraPosteColuna').show();
-    } else{
-        $('#extraPosteColuna').hide();
-    }
-});
 /* há duas labels: uma de Watts e uma de BTUs. Somente ar condicionado é medido em BTUs.
 Então, ao iniciar, escondo a de BTUs e só a mostro quando o equipamento selecionado for ArCon*/
 $('#labelPotenciaAr').hide();
@@ -195,24 +179,6 @@ $('#inputPotenciaEquipamento').change(function () {
         // ao repassar algum valor,aí sim poderá adicionar.
         document.getElementById('addEquip').setAttribute("onclick","addEquip()");
     }
-});
-// função de validação dos inputs do formulário
-(function() {
-    'use strict';
-    window.addEventListener('load', function() {
-        // Seleciona o formulário que vai ter os inputs validados
-        var forms = document.getElementsByClassName('needs-validation');
-        // Trabalha sobre eles e impede o submit enquanto não for tudo preenchido
-        var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-        }, false);
-        });
-    }, false);
 });
 // máscaras
 function SoNumeros(evt) {
@@ -316,10 +282,11 @@ var cancelButton = document.getElementById('clearCanvasSimple');
 saveButton.addEventListener("click", function(event) {
     if (signaturePad.isEmpty()) {
         alert("Para finalizar, é necessário assinar!");
+        return false;
     } else {
         var dataURL = signaturePad.toDataURL();
         $("#imageCheck").val(dataURL);
-        $("#gravaRel").submit();
+        $("#formNovaLigacao").submit();
     }
 });
 
@@ -345,7 +312,7 @@ const interval = setInterval(() => {
 }, 1000);
 //service worker
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
+    navigator.serviceWorker.register('/carga/sw.js')
       .then(function () {
         console.log('service worker registered');
       })

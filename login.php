@@ -40,6 +40,7 @@
         echo '<style>#nav,#footer{background-color:#42a7a4 !important;}</style>';
     }
     if(isset($_POST)){
+        require_once('src/conn/connect.php');
         $user = @$_POST['inputLogin'];
         $psw = @md5($_POST['inputSenha']);
         $stmt = $bd->prepare('SELECT * FROM tb_users');
@@ -47,15 +48,19 @@
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
         foreach($result as $res){
             if($user == $res->matr_user && $psw == $res->senha){
-                if($res->active == 1){
-                    $save = $bd->prepare('INSERT INTO tb_login (login) VALUES (:logged)');
-                    $save->bindParam(':logged',$user);
+                if($res->ativo == 1){
+                    echo $_SERVER['REMOTE_ADDR'];
+                    $save = $bd->prepare('INSERT INTO tb_login (id_user,id_lotacao,ip,data_login) VALUES (:user,:lotacao,:ip,NOW())');
+                    $save->bindParam(':user',$res->id_user);
+                    $save->bindParam(':lotacao',$res->lotacao);
+                    $save->bindParam(':ip',$_SERVER['REMOTE_ADDR']);
                     $save->execute();
                     session_start();
-                    $_SESSION['user'] = $res->user;
-                    $_SESSION['lotacao'] = $res->lotacao
-                    $_SESSION['nivel'] = $res->nivel_user;
-                    header('Location: src/painel.php');
+                    $_SESSION['user'] = $res->id_user;
+                    $_SESSION['lotacao'] = $res->lotacao;
+                    $_SESSION['nivel'] = $res->nivel;
+                    require_once('session.php');
+                    header('Location: src/index.php');
                     exit();
                 } else{
                     header('Location: index.php?erro=0');

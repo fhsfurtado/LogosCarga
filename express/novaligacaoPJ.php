@@ -57,7 +57,7 @@
 <body>
     <div id="sidebar">
         <nav id="nav" class="navbar navbar-collapse navbar-expand static-top" role="navigation" style="margin-bottom: 0">
-            <a class="navbar-brand mr-1" href="<?php echo BASE;?>/express.php"style="background-color: white; border-radius: 6px;"><img src="<?php echo BASE;?>/img/logo.png" height="50px"></a>
+            <a class="navbar-brand mr-1" href="<?php echo BASE;?>/express/express.php"style="background-color: white; border-radius: 6px;"><img src="<?php echo BASE;?>/img/logo.png" height="50px"></a>
             <input type="hidden" id="data-hora" class="col justify-content-center text-center">
         </nav>
     </div>
@@ -80,24 +80,21 @@
                     <div class="form-group col-lg">
                         <label for="inputNome">Razão Social*:</label>
                         <input type="text" class="form-control p01" id="inputNome" name="inputNome" placeholder="Nome Completo" required>
-                        <div class="valid-feedback">
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg">
                         <label for="inputCPF">CNPJ*:</label>
                         <input type="tel" class="form-control p01" id="inputCNPJ" name="inputCNPJ" onkeydown="return fMasc(this,mCNPJ)" placeholder="Nº do CNPJ" minlength="18" maxlength="18" required>
-                        <div class="valid-feedback">
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-4">
                         <label for="inputCEP">CEP*:</label>
                         <input type="tel" class="form-control p01" id="inputCEP" name="inputCEP" onkeypress="fMasc(this,mCEP)" placeholder="CEP" minlength="10" maxlength="10" required>
-                        <div class="valid-feedback">
-                        </div>
+                        
                     </div>
                     <div class="form-group col-lg-4 justify-content-center text-center">
                         <label for="pesquisarCEP"> </label>
@@ -108,30 +105,26 @@
                     <div class="form-group col-lg-8">
                         <label for="inputEndereco">Endereço da ligação*:</label>
                         <input type="text" class="form-control p01" id="inputEndereco" name="inputEndereco" placeholder="Rua, Avenida, Estrada, etc..." required>
-                        <div class="valid-feedback">
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="row address-field">
                     <div class="form-group col-lg-6">
                         <label for="inputComplemento">Complemento*:</label>
                         <input type="text" class="form-control p01" id="inputComplemento" name="inputComplemento" placeholder="Complemento" required>
-                        <div class="valid-feedback">
-                        </div>
+                        
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="inputBairro">Bairro*</label>
                         <input type="text" class="form-control p01" id="inputBairro" name="inputBairro" placeholder="Bairro" required>
-                        <div class="valid-feedback">
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="row address-field">
                     <div class="form-group col-lg-8">
                         <label for="inputMunicipio">Município*:</label>
                         <input type="text" class="form-control p01" id="inputMunicipio" name="inputMunicipio" placeholder="Municipio" required>
-                        <div class="valid-feedback">
-                        </div>
+                        
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputNumero">Nº:</label>
@@ -142,20 +135,17 @@
                     <div class="form-group col-lg-4">
                         <label for="inputEmail">E-mail*:</label>
                         <input type="email" class="form-control p01" id="inputEmail" name="inputEmail" placeholder="seuemail@exemplo.com" required>
-                        <div class="valid-feedback">
-                        </div>
+                        
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputFixo">Telefone Fixo:</label>
                         <input type="text" class="form-control" id="inputFixo" name="inputFixo" onkeypress="fMasc(this,mTel)" placeholder="(XX) XXXX-XXXX">
-                        <div class="valid-feedback">
-                        </div>
+                        
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputCelular">Telefone Celular*:</label>
                         <input type="text" class="form-control p01" id="inputCelular" name="inputCelular" onkeypress="fMasc(this,mTel)" placeholder="(XX) X XXXX-XXXX" required>
-                        <div class="valid-feedback">
-                        </div>
+                        
                     </div>
                 </div>
                 <hr/>
@@ -286,7 +276,7 @@
                 <hr/>
                 <div class="row justify-content-center">
                     <a class="btn btn-lg btn-warning justify-content-start" name="back03" id="back03"><i class="fas fa-arrow-circle-left"></i></a>
-                    <button type="submit" class="btn btn-lg btn-primary justify-content-end" name="save" id="save"><i class="far fa-save"></i></button>
+                    <a class="btn btn-lg btn-primary justify-content-end" name="save" id="save"><i class="far fa-save"></i></a>
                 </div></br>
             </div>
             <!-- FIM PARTE 4 -->

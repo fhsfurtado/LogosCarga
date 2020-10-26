@@ -37,13 +37,13 @@
 
     <?php
     $mes = date('m');
-    if($mes=='09'){
+    if($mes=='09'){//setembro amarelo
         echo '<style>#nav,#footer{background-color:#f9be07 !important;}</style>';
     }
-    if($mes=='10'){
+    if($mes=='10'){//outubro rosa
         echo '<style>#nav,#footer{background-color:#ff4787 !important;}</style>';
     }
-    if($mes=='11'){
+    if($mes=='11'){//novembro azul
         echo '<style>#nav,#footer{background-color:#42a7a4 !important;}</style>';
     }
     ?>
@@ -67,7 +67,7 @@
     <div id="content" class="content container-fluid" style="display: none">
         <div class="container">
             <div class="row justify-content-center"> <h2 class="justify-content-center"> Serviços <i class="fas fa-plug"></i></h2></div><hr/>
-            <div class="row">
+            <div class="row justify-content-center">
 
                 <!-- <div class="card justify-content-center text-center" width="100%">
                     <div class="card text-center btn cardopt" name="formularioCarga" id="formularioCarga">
@@ -98,6 +98,29 @@
                             </div>
                             <div class="card-footer">
                                 Pessoa Jurídica
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card justify-content-center text-center" id="novaLigacao" name="novaLigacao" width="100%">
+                    <div class="card-header">
+                        Alteração de Contrato
+                    </div>
+                    <div class="row card-body">
+                        <div class="card text-center btn cardopt" name="cancelarContrato" id="cancelarContrato">
+                            <div class="card-body">
+                                <i class="fas fa-ban fa-6x"></i>
+                            </div>
+                            <div class="card-footer">
+                                Cancelamento
+                            </div>
+                        </div>
+                        <div class="card text-center btn cardopt" name="trocarTitularidade" id="trocarTitularidade">
+                            <div class="card-body">
+                                <i class="fas fa-exchange-alt fa-6x"></i>
+                            </div>
+                            <div class="card-footer">
+                                Trocar Titular
                             </div>
                         </div>
                     </div>

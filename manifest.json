@@ -1,10 +1,17 @@
 {
-  "name": "ENEL Express",
-  "short_name": "ENEL Express",
+  "name": "ENEL Agiliza",
+  "short_name": "ENEL Agiliza",
   "theme_color": "#ff0000",
   "background_color": "#d4d2cd",
   "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/carga",
-  "start_url": "/carga"
+  "start_url": "/carga/express/express.php",
+  "icons": [
+    {
+      "src": "/carga/img/pwa.png",
+      "sizes": "800x800",
+      "type": "image/png"
+    }
+  ]
 }

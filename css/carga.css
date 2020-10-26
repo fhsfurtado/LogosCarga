@@ -27,11 +27,15 @@ hr{
     margin-inline-end: auto;
 }
 .cardopt{
-    width: 10rem;
-    height: 12rem;
+    width: 14rem;
+    height: 15rem;
     margin: 7px;
     background-color: red !important; 
     color: white !important;
+    text-align: center !important;
+}
+.cardopt:hover{
+    background-color: #ff4254 !important;
 }
 .signature-pad {
     position: absolute;

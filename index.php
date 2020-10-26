@@ -15,7 +15,7 @@
 <html>
 <head>
 
-    <title> Atendimento ENEL </title>
+    <title> ENEL Agiliza </title>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +25,6 @@
     <link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
 
     <!-- Manifest JSON-->
-    <link rel="manifest" href="manifest.json">
 
     <!-- jQuery AJax-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -79,7 +78,7 @@
             <div class="row justify-content-center text-center">
                 <div class="col-lg-4 card">
                     <div class="card-header">
-                        <a class="navbar-brand mr-1" href="index.php"><img src="img/logo.png" width="250" alt="ENEL Atendimento"></a>
+                        <a class="navbar-brand mr-1" href="index.php"><img src="img/logo.png" width="220" alt="ENEL Atendimento"></a>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Login</h5>

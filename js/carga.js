@@ -1,13 +1,16 @@
 // controle dos botões. efetua o controle de ida e volta no formulário.
 // controle dos botões da index.php
-$('#formularioCarga').on("click", function() {
-    window.location.href = "src\\formulario.php";
-});
 $('#novaLigacaoPF').on("click", function() {
     window.location.href = "novaLigacaoPF.php";
 });
 $('#novaLigacaoPJ').on("click", function() {
     window.location.href = "novaLigacaoPJ.php";
+});
+$('#cancelarContrato').on("click", function() {
+    window.location.href = "cancelarContrato.php";
+});
+$('#trocarTitularidade').on("click", function() {
+    window.location.href = "trocarTitularidade.php";
 });
 // tela 01
 //botão voltar
@@ -192,24 +195,6 @@ $('#inputPotenciaEquipamento').change(function () {
         // ao repassar algum valor,aí sim poderá adicionar.
         document.getElementById('addEquip').setAttribute("onclick","addEquip()");
     }
-});
-// função de validação dos inputs do formulário
-(function() {
-    'use strict';
-    window.addEventListener('load', function() {
-        // Seleciona o formulário que vai ter os inputs validados
-        var forms = document.getElementsByClassName('needs-validation');
-        // Trabalha sobre eles e impede o submit enquanto não for tudo preenchido
-        var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-        }, false);
-        });
-    }, false);
 });
 // máscaras
 function SoNumeros(evt) {
