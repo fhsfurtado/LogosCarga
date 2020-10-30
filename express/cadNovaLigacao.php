@@ -1,6 +1,7 @@
 <?php
     require_once('../config.php');
     require_once('conn/connect.php');
+    date_default_timezone_set('America/Sao_Paulo');
     $status='';
     $diff = rand(1, 9999); //diferenciador entre possíveis clientes cadastrados ao mesmo tempo
     $tipoAtend = $_POST['tipoAtendimento'];
@@ -77,7 +78,7 @@
             $tipoLigacao = $_POST['radioTipoLigacao'];
             $clienteReceberInfos = $_POST['radioReceberInfo'];
             $qtdeEquips = $_POST['qtdeEquipAdd'];
-            $protocolo = 'NLPF';
+            $protocolo = 'NLPJ';
             $protocolo .= date('Y');
             $protocolo .= date('m');
             $protocolo .= date('d');

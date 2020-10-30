@@ -27,8 +27,8 @@ for (var i = 0; i < elements.length; i++) {
             document.getElementById('next').style.display='inline';
         }
     }
-    if($('#tipoAtendimento').value == 'cnpj'){
-        if($('#inputNome').value == '' || $('#inputCNPJ').value == '' || $('#inputCEP').value == '' || $('#inputEndereco').value == '' || $('#inputComplemento').value == '' || $('#inputBairro').value == '' || $('#inputMunicipio').value == '' || $('#inputEmail').value == '' || $('#inputCelular').value == '')
+    if(document.getElementById('tipoAtendimento').value == 'cnpj'){
+        if(document.getElementById('inputNome').value == '' || document.getElementById('inputCNPJ').value == '' || document.getElementById('inputCEP').value == '' || document.getElementById('inputEndereco').value == '' || document.getElementById('inputComplemento').value == '' || document.getElementById('inputBairro').value == '' || document.getElementById('inputMunicipio').value == '' || document.getElementById('inputEmail').value == '' || document.getElementById('inputCelular').value == '')
         {
             document.getElementById('next').style.display='none';
         } else {

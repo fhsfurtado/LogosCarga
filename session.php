@@ -1,6 +1,7 @@
 <?php
     session_start();
-    require_once('conn/connect.php');
+    require_once('src/conn/connect.php');
+    date_default_timezone_set('America/Fortaleza');
     if($_SESSION == '' || $_SESSION == NULL){
         header('Location: ../index.php');
         die();
@@ -12,6 +13,7 @@
         $sess->bindParam(':id',$user);
         $sess->execute();
         $result = $sess->fetch();
-        $nome_colaborador = $result['nome_user'];
+        $nome_completo = $result['nome_user'];
+        $nome_curto = explode(' ', $nome_completo);
     }
     ?>

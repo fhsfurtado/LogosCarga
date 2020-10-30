@@ -78,7 +78,7 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-lg">
-                        <label for="inputNome">Razão Social*:</label>
+                        <label for="inputNome">Nome Completo*:</label>
                         <input type="text" class="form-control p01" id="inputNome" name="inputNome" placeholder="Nome Completo" required>
                         
                     </div>

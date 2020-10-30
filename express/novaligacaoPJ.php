@@ -66,9 +66,9 @@
 	    Carregando...
 	</div>
     <div id="content" class="content container-fluid" style="display: none">
-        <form id="formNovaLigacao" name="formNovaLigacao" class="needs-validation was-validated" action="cadNovaLigacao.php" method="POST">
+        <form id="formNovaLigacao" name="formNovaLigacao" action="cadNovaLigacao.php" method="POST">
             <!-- PARTE 1 - DADOS DO CLIENTE -->
-            <input type="hidden" name="tipoAtendimento" value="cnpj">
+            <input type="hidden" id="tipoAtendimento" name="tipoAtendimento" value="cnpj">
             <div class="card container" name="dadosCliente" id="dadosCliente">
                 <div class="card-header row justify-content-center">
                     <label for="dadosCliente"><h4>Empresa</h4></label>
@@ -79,7 +79,7 @@
                 <div class="row">
                     <div class="form-group col-lg">
                         <label for="inputNome">Razão Social*:</label>
-                        <input type="text" class="form-control p01" id="inputNome" name="inputNome" placeholder="Nome Completo" required>
+                        <input type="text" class="form-control p01" id="inputNome" name="inputNome" placeholder="Razão Social da Empresa" required>
                         
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                 <div class="row">
                     <div class="form-group col-lg-4">
                         <label for="inputCEP">CEP*:</label>
-                        <input type="tel" class="form-control p01" id="inputCEP" name="inputCEP" onkeypress="fMasc(this,mCEP)" placeholder="CEP" minlength="10" maxlength="10" required>
+                        <input type="tel" class="form-control p01" id="inputCEP" name="inputCEP" onkeydown="fMasc(this,mCEP)" placeholder="CEP" minlength="10" maxlength="10" required>
                         
                     </div>
                     <div class="form-group col-lg-4 justify-content-center text-center">
@@ -139,12 +139,12 @@
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputFixo">Telefone Fixo:</label>
-                        <input type="text" class="form-control" id="inputFixo" name="inputFixo" onkeypress="fMasc(this,mTel)" placeholder="(XX) XXXX-XXXX">
+                        <input type="text" class="form-control" id="inputFixo" name="inputFixo" onkeydown="fMasc(this,mTel)" minlength="13" maxlength="13" placeholder="(XX) XXXX-XXXX">
                         
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputCelular">Telefone Celular*:</label>
-                        <input type="text" class="form-control p01" id="inputCelular" name="inputCelular" onkeypress="fMasc(this,mTel)" placeholder="(XX) X XXXX-XXXX" required>
+                        <input type="text" class="form-control p01" id="inputCelular" name="inputCelular" onkeydown="fMasc(this,mTel)" minlength="14" maxlength="14" placeholder="(XX) X XXXX-XXXX" required>
                         
                     </div>
                 </div>
@@ -269,7 +269,7 @@
                     </div>
                     <a class="btn btn-outline-primary col-lg-4" id="clearCanvasSimple">Limpar</a>
                     <div class="card-footer">
-                    Para finalizar a solicitação, faça acima a sua assinatura.
+                    Para finalizar a solicitação, o responsável deverá assinar.
                     </div>
                 </div>
                 <textarea name="imageCheck" id="imageCheck" cols="30" rows="10" hidden></textarea>

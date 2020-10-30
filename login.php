@@ -39,6 +39,16 @@
     if($mes=='11'){
         echo '<style>#nav,#footer{background-color:#42a7a4 !important;}</style>';
     }
+    $mobile = FALSE;
+   $user_agents = array("iPhone","iPad","Android","webOS","BlackBerry","iPod","Symbian","IsGeneric");
+    $modelo = "Desktop";
+   foreach($user_agents as $user_agent){
+     if (strpos($_SERVER['HTTP_USER_AGENT'], $user_agent) !== FALSE) {
+        $modelo	= $user_agent;
+        $mobile = TRUE;
+	    break;
+     }
+   }
     if(isset($_POST)){
         require_once('src/conn/connect.php');
         $user = @$_POST['inputLogin'];
@@ -46,19 +56,22 @@
         $stmt = $bd->prepare('SELECT * FROM tb_users');
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $meuip = json_decode(file_get_contents('https://api.ipify.org?format=json'),true);
         foreach($result as $res){
             if($user == $res->matr_user && $psw == $res->senha){
                 if($res->ativo == 1){
                     echo $_SERVER['REMOTE_ADDR'];
-                    $save = $bd->prepare('INSERT INTO tb_login (id_user,id_lotacao,ip,data_login) VALUES (:user,:lotacao,:ip,NOW())');
+                    $save = $bd->prepare('INSERT INTO tb_login (id_user,id_lotacao,ip,dispositivo,data_login) VALUES (:user,:lotacao,:ip,:dispositivo,NOW())');
                     $save->bindParam(':user',$res->id_user);
                     $save->bindParam(':lotacao',$res->lotacao);
-                    $save->bindParam(':ip',$_SERVER['REMOTE_ADDR']);
+                    $save->bindParam(':dispositivo',$modelo);
+                    $save->bindParam(':ip',$meuip['ip']);
                     $save->execute();
                     session_start();
                     $_SESSION['user'] = $res->id_user;
                     $_SESSION['lotacao'] = $res->lotacao;
                     $_SESSION['nivel'] = $res->nivel;
+                    $_SESSION['isMobile'] = $mobile;
                     require_once('session.php');
                     header('Location: src/index.php');
                     exit();
