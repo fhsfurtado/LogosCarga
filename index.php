@@ -25,7 +25,7 @@
     <link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
 
     <!-- Manifest JSON-->
-
+    <link rel="manifest" href="manifest.json">
     <!-- jQuery AJax-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo BASE;?>/js/signature.js"></script>

@@ -68,17 +68,17 @@
     <div id="content" class="content container-fluid" style="display: none">
         <form id="formNovaLigacao" name="formNovaLigacao" action="cadNovaLigacao.php" method="POST">
             <!-- PARTE 1 - DADOS DO CLIENTE -->
-            <input type="hidden" id="tipoAtendimento" name="tipoAtendimento" value="cpf">
+            <input type="hidden" id="tipoAtendimento" name="tipoAtendimento" value="canc">
             <div class="card container" name="dadosCliente" id="dadosCliente">
                 <div class="card-header row justify-content-center">
-                    <label for="dadosCliente"><h4>Cliente</h4></label>
+                    <label for="dadosCliente"><h4> Cancelamento de Contrato </h4></label>
                 </div></br>
                 <div class="row justify-content-center">
                     <label for="dadosCliente"><h5>Dados Pessoais</h5></label>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg">
-                        <label for="inputNome">Razão Social*:</label>
+                        <label for="inputNome">Nome do Titular / Solicitante*:</label>
                         <input type="text" class="form-control p01" id="inputNome" name="inputNome" placeholder="Nome Completo" required>
                         
                     </div>
@@ -86,18 +86,21 @@
                 <div class="row">
                     <div class="form-group col-lg">
                         <label for="inputCPF">CPF*:</label>
-                        <input type="tel" class="form-control p01" id="inputCPF" name="inputCPF" onkeydown="return fMasc(this,mCPF)" placeholder="Nº do CPF" minlength="14" maxlength="14" required>
-                        
+                        <input type="tel" class="form-control p01" id="inputDoc" name="inputDoc" onkeydown="return fMasc(this,mCPF)" placeholder="Nº do CPF" minlength="14" maxlength="14" required>
+                    </div>
+                    <div class="form-group col-lg">
+                        <label for="inputNumero">Nº da Unidade Consumidora*:</label>
+                        <input type="tel" class="form-control" id="inputUC" name="inputUC" onkeypress="return SoNumeros();" placeholder="Nº da UC" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-4">
-                        <label for="inputCEP">CEP*:</label>
+                        <label for="inputCEP">CEP da Unidade Consumidora*:</label>
                         <input type="tel" class="form-control p01" id="inputCEP" name="inputCEP" onkeydown="fMasc(this,mCEP)" placeholder="CEP" minlength="10" maxlength="10" required>
                         
                     </div>
-                    <div class="form-group col-lg-4 justify-content-center text-center">
-                        <label for="pesquisarCEP"> </label>
+                    <div class="form-group col-lg-4">
+                        <label for="pesquisarCEP" class="text-white">Pesquisar</label>
                         <button type="button" id="pesquisarCEP" class="btn btn-outline-primary">Pesquisar CEP</button>
                     </div>
                 </div>
@@ -139,13 +142,38 @@
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputFixo">Telefone Fixo:</label>
-                        <input type="text" class="form-control" id="inputFixo" name="inputFixo" onkeydown="fMasc(this,mTel)" minlength="13" maxlength="13" placeholder="(XX) XXXX-XXXX">
+                        <input type="tel" class="form-control" id="inputFixo" name="inputFixo" onkeydown="fMasc(this,mTel)" minlength="13" maxlength="13" placeholder="(XX) XXXX-XXXX">
                         
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputCelular">Telefone Celular*:</label>
-                        <input type="text" class="form-control p01" id="inputCelular" name="inputCelular" onkeydown="fMasc(this,mTel)" minlength="14" maxlength="14" placeholder="(XX) X XXXX-XXXX" required>
+                        <input type="tel" class="form-control p01" id="inputCelular" name="inputCelular" onkeydown="fMasc(this,mTel)" minlength="14" maxlength="14" placeholder="(XX) X XXXX-XXXX" required>
                         
+                    </div>
+                </div>
+                <div class="row text-center justify-content-center">
+                    <div class="form-group col-lg">
+                        <div class="form-check">
+                            <label for="inputEndereco">Classificação:</label>
+                        </div>
+                        <div class="form-check form-check-inline text-center">
+                            <input class="form-check-input" type="radio" name="radioClassificacao" id="radioClassificacao1" value="residencial" checked>
+                            <label class="form-check-label" id="radioClassificacao1" for="radioClassificacao1">
+                                Residencial
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline text-center">
+                            <input class="form-check-input" type="radio" name="radioClassificacao" id="radioClassificacao2" value="comercial">
+                            <label class="form-check-label" id="radioClassificacao2" for="radioClassificacao2">
+                                Comercial
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline text-center">
+                            <input class="form-check-input" type="radio" name="radioClassificacao" id="radioClassificacao3" value="industrial">
+                            <label class="form-check-label" id="radioClassificacao3" for="radioClassificacao3">
+                                Industrial
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <hr/>
@@ -155,127 +183,26 @@
                 </div></br>
             </div>
             <!-- FIM PARTE 1 -->
-            <!-- PARTE 2 - SOBRE O IMÓVEL -->
-            <div class="card container" name="dadosInfo" id="dadosInfo" style="display: none">
-                <div class="card-header row justify-content-center">
-                    <label for="dadosCliente"><h4>Tipo de ligação</h4></label>
-                </div>
-                <div class="row card-body text-center justify-content-center">
-                    <div class="form-group col-lg">
-                        <div class="form-check">
-                            <label for="inputEndereco">Tipo de Ligação:</label>
-                        </div>
-                        <div class="form-check form-check-inline text-center">
-                            <input class="form-check-input" type="radio" name="radioTipoLigacao" id="radioTipoLigacao1" value="monofasico" checked>
-                            <label class="form-check-label" id="labelTipoLigacao1" for="radioTipoLigacao1">
-                                Monofásica
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline text-center">
-                            <input class="form-check-input" type="radio" name="radioTipoLigacao" id="radioTipoLigacao2" value="bifasico">
-                            <label class="form-check-label" id="labelTipoLigacao2" for="radioTipoLigacao2">
-                                Bifásica
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline text-center">
-                            <input class="form-check-input" type="radio" name="radioTipoLigacao" id="radioTipoLigacao3" value="trifasico">
-                            <label class="form-check-label" id="labelTipoLigacao3" for="radioTipoLigacao3">
-                                Trifásica
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-header row justify-content-center">
-                    <label for="dadosCliente"><h4>Nossos Informativos</h4></label>
-                </div>
-                <div class="row card-body justify-content-center text-center" >
-                    <div class="form-group col-lg-8">
-                        <div class="form-check">
-                            <label for="inputBairro">Deseja receber informações e serviços da ENEL via e-mail Fácil e Torpedo Fácil?</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioReceberInfo" id="inlineSim" value="sim" checked>
-                            <label class="form-check-label text-black" for="inlineRadio1"> Sim</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioReceberInfo" id="inlineNao" value="nao">
-                            <label class="form-check-label text-black" for="inlineRadio2"> Não</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center buttons-action">
-                    <a class="btn btn-lg btn-warning justify-content-start" name="back01" id="back01"><i class="fas fa-arrow-circle-left"></i></a>
-                    <a class="btn btn-lg btn-primary justify-content-end" name="next01" id="next01"><i class="fas fa-arrow-circle-right"></i></a>
-                </div></br>
-            </div>
-            <!-- FIM PARTE 2-->
-            <!-- INICIO PARTE 3 - RELAÇÃO DE CARGA -->
-            <div class="card container" name="dadosRelCarga" id="dadosRelCarga" style="display: none">
-                <div class="card row justify-content-center text-center">
-                    <div class="card-header">
-                        <label for="tipoServico">Relação de Carga:</label>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-body row justify-content-center text-center">
-                            <div class="col-lg-4">
-                                <label for="selEquipamento"></label>
-                                <select name="selEquipamento" id="selEquipamento" class="col-lg-6">
-                                    <option value="Lâmpada Compacta/Fria">Lâmpada Compacta/Fria</option>
-                                    <option value="Lâmpada Incandescente">Lâmpada Incandescente</option>
-                                    <option value="Lâmpada Fluorescente">Lâmpada Fluorescente</option>
-                                    <option value="Tomada de Uso Geral">Tomada de Uso Geral</option>
-                                    <option value="Tomada de Uso Específico">Tomada de Uso Específico</option>
-                                    <option value="Torneira Elétrica">Torneira Elétrica</option>
-                                    <option value="Chuveiro Elétrico">Chuveiro Elétrico</option>
-                                    <option value="Máquina de Lavar Louça">Máquina de Lavar Louça</option>
-                                    <option value="Secadora de Roupas">Secadora de Roupas</option>
-                                    <option value="Forno Microondas">Forno Microondas</option>
-                                    <option value="Forno Elétrico">Forno Elétrico</option>
-                                    <option value="Ferro Elétrico">Ferro Elétrico</option>
-                                    <option value="Ar Condicionado">Ar Condicionado</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-4">
-                                <input type="tel" name="inputPotenciaEquipamento" id="inputPotenciaEquipamento" class="col-lg-3" onkeypress="return SoNumeros();" placeholder="Potência. Ex.: 25, 60, etc.">
-                                <label for="inputPotenciaEquipamento" id="labelPotenciaEquip">Watts</label>
-                                <label for="inputPotenciaEquipamento" id="labelPotenciaAr">BTU's</label>
-                            </div>
-                            <div class="col-lg-2">
-                                <input type="hidden" name="qtdeEquipAdd" id="qtdeEquipAdd" value="<?php echo $zero;?>">
-                                <a class="btn btn-outline-primary col-lg-6" id="addEquip" name="addEquip" onclick="addEquip()"><i class="fas fa-plus-square"></i> Adicionar Equipamento</a>
-                            </div>
-                        </div>
-                        <hr/>
-                        <label for="nothing">Lista de Equipamentos</label>
-                        <div class="row justify-content-center text-center" id="listEquipamentos">
-                            <label for="nothing too" id="semEquip" name="semEquip">Não há dispositivos adicionados à lista!</label>
-                        </div><hr/>
-                    </div>
-                </div><hr/>
-                <div class="row justify-content-center">
-                    <a class="btn btn-lg btn-warning justify-content-start" name="back02" id="back02"><i class="fas fa-arrow-circle-left"></i></a>
-                    <a class="btn btn-lg btn-primary justify-content-end" name="next02" id="next02"><i class="fas fa-arrow-circle-right"></i></a>
-                </div></br>
-            </div>
-            <!-- FIM PARTE 3 -->
-            <!-- PARTE 4 - ASSINATURA -->
+            <!-- PARTE 2 - ASSINATURA -->
             <div class="card container" name="dadosAssinatura" id="dadosAssinatura" style="display: none">
                 <div class="card row justify-content-center text-center">
                     <div class="card-header">
                         <label for="tipoServico">Assinatura</label>
                     </div>
                     <div class="card-body" id="canvas" width="500" height="300">
-                        <canvas id="signature-pad" name="signature-pad" width="500" height="300"></canvas>
+                        <canvas id="signature-pad" name="signature-pad" width="500" height="300" style="border-style: ridge;"></canvas>
                     </div>
-                    <a class="btn btn-outline-primary col-lg-4" id="clearCanvasSimple">Limpar</a>
+                    <div class="col justify-content-center text-center">
+                        <a class="btn btn-outline-primary col-lg-4" id="clearCanvasSimple">Limpar</a>
+                    </div>
                     <div class="card-footer">
-                    Para finalizar a solicitação, faça acima a sua assinatura.
+                    Para confirmar o cancelamento, preencha o campo com a sua assinatura.
                     </div>
                 </div>
                 <textarea name="imageCheck" id="imageCheck" cols="30" rows="10" hidden></textarea>
                 <hr/>
                 <div class="row justify-content-center">
-                    <a class="btn btn-lg btn-warning justify-content-start" name="back03" id="back03"><i class="fas fa-arrow-circle-left"></i></a>
+                    <a class="btn btn-lg btn-warning justify-content-start" name="back01" id="back01"><i class="fas fa-arrow-circle-left"></i></a>
                     <a class="btn btn-lg btn-primary justify-content-end" name="save" id="save"><i class="far fa-save"></i></a>
                 </div></br>
             </div>
@@ -299,6 +226,6 @@
     <!-- Custom scripts for all pages-->
     <script src="<?php echo BASE;?>/vendor/font-awesome/js/all.min.js"></script>
     <script src="<?php echo BASE;?>/vendor/font-awesome/js/fontawesome.min.js"></script>
-    <script src="<?php echo BASE;?>/js/novaligacao.js"></script>
+    <script src="<?php echo BASE;?>/js/cancelaContrato.js"></script>
     </body>
 </html>

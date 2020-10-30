@@ -120,6 +120,56 @@
             }
             $status='OK';
             break;
+        case 'canc':
+            $nome = $_POST['inputNome'];
+            $numDocumento = $_POST['inputDoc'];
+            $unidadeConsumidora = $_POST['inputUC'];
+            $cep = $_POST['inputCEP'];
+            $endereco = $_POST['inputEndereco'];
+            $complementoEndereco = $_POST['inputComplemento'];
+            $bairro  = $_POST['inputBairro'];
+            $municipio = $_POST['inputMunicipio'];
+            $numeroEndereco = $_POST['inputNumero'];
+            $email = $_POST['inputEmail'];
+            $telfixo = $_POST['inputFixo'];
+            $telcelular = $_POST['inputCelular'];
+            $classificacao = $_POST['radioClassificacao'];
+            $assinatura = $_POST['imageCheck'];
+            $atendido = 'nao';
+            $protocolo = 'CANC';
+            $protocolo .= date('Y');
+            $protocolo .= date('m');
+            $protocolo .= date('d');
+            $protocolo .= date('H');
+            $protocolo .= date('i');
+            $protocolo .= date('s');
+            $protocolo .= str_pad($diff, 4, 0, STR_PAD_LEFT);
+            $receberinfo = 'sim';
+            //salvar no banco
+            $stmt = $bd->prepare('INSERT INTO tb_clientes(nome_cliente,cpfcnpj,num_uc,cep,endereco,numero,complemento,bairro,municipio,email,telefone,celular,tipo_ligacao,receberInfo,protocolo,assinatura,atendido) VALUES (:nome_cliente,:cpfcnpj,:num_uc,:cep,:endereco,:numero,:complemento,:bairro,:municipio,:email,:telefone,:celular,:tipo_ligacao,:receberInfo,:protocolo,:assinatura,:atendido)');
+            $stmt->bindParam(':nome_cliente',$nome);
+            $stmt->bindParam(':cpfcnpj',$numDocumento);
+            $stmt->bindParam(':num_uc',$unidadeConsumidora);
+            $stmt->bindParam(':cep',$cep);
+            $stmt->bindParam(':endereco',$endereco);
+            $stmt->bindParam(':numero',$numeroEndereco);
+            $stmt->bindParam(':complemento',$complementoEndereco);
+            $stmt->bindParam(':bairro',$bairro);
+            $stmt->bindParam(':municipio',$municipio);
+            $stmt->bindParam(':email',$email);
+            $stmt->bindParam(':telefone',$telfixo);
+            $stmt->bindParam(':celular',$telcelular);
+            $stmt->bindParam(':tipo_ligacao',$classificacao);
+            $stmt->bindParam(':assinatura',$assinatura);
+            $stmt->bindParam(':protocolo',$protocolo);
+            $stmt->bindParam(':atendido',$atendido);
+            $stmt->bindParam(':receberInfo',$receberinfo);
+            $stmt->execute();
+            $status='OK';
+            break;
+        case 'trtl':
+            var_dump($_POST);
+            break;
         default:
             $status='FAIL';
             break;
